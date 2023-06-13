@@ -27,6 +27,7 @@
       nodePackages_latest.pyright
       nodePackages_latest.vscode-css-languageserver-bin
       nodePackages_latest.typescript-language-server
+      nodePackages_latest.prettier_d_slim
       nodePackages."@tailwindcss/language-server"
     ];
   };
