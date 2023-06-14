@@ -10,6 +10,7 @@
         ({ pkgs, ... }: {
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
         })
+        ./hardware-configuration.nix
         ./configuration.nix
         ./marsh/marsh.nix
       ];

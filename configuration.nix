@@ -1,9 +1,4 @@
 { pkgs, ... }: {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
-
   nix.extraOptions = ''
   	plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
   '';
@@ -17,12 +12,17 @@
     "/crypto_keyfile.bin" = null;
   };
 
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+  };
+
   boot.kernelParams = [
   	"preempt=voluntary"
 	  "intel_iommu=on"
 	  "iommu.passthrough=1"
     "acpi_osi=\"!Windows 2020\""
     "nvme.noacpi=1"
+    "net.ifnames=0"
   ];
 
   networking.hostName = "marsh-framework";
