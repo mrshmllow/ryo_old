@@ -21,6 +21,8 @@
   	"preempt=voluntary"
 	  "intel_iommu=on"
 	  "iommu.passthrough=1"
+    "acpi_osi=\"!Windows 2020\""
+    "nvme.noacpi=1"
   ];
 
   networking.hostName = "marsh-framework";
@@ -84,6 +86,11 @@
     pulse.enable = true;
   };
 
+  # Enable iio-sensor-proxy
+  hardware.sensor.iio.enable = true;
+
+  services.thermald.enable = true;
+
   environment.shells = with pkgs; [ fish ];
   programs.fish.enable = true;
 
@@ -137,8 +144,6 @@
     viAlias = true;
     vimAlias = true;
   };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
