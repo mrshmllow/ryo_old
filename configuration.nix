@@ -22,7 +22,7 @@
 	  "iommu.passthrough=1"
     "acpi_osi=\"!Windows 2020\""
     "nvme.noacpi=1"
-    "net.ifnames=0"
+    # "net.ifnames=0"
   ];
 
   networking.hostName = "marsh-framework";
@@ -35,7 +35,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  # networking.networkmanager.wifi.backend = "iwd";
+  networking.networkmanager.wifi.backend = "iwd";
 
   # Set your time zone.
   time.timeZone = "Australia/Sydney";
