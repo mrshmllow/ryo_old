@@ -1,4 +1,8 @@
-{ pkgs, home-manager, ... }: {
+{
+  pkgs,
+  home-manager,
+  ...
+}: {
   imports = [
     home-manager.nixosModule
   ];
@@ -8,16 +12,18 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "marsh";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       webcord-vencord
       ripgrep
-      mpv
       flatpak-builder
 
       # Code Stuff
       nodejs_20
       nodePackages_latest.pnpm
+
+      # Extra fish stuff
+      any-nix-shell
 
       # Neovim stuff
       lua-language-server
@@ -32,7 +38,11 @@
     ];
   };
 
-  home-manager.users.marsh = { pkgs, config, ... }: {
+  home-manager.users.marsh = {
+    pkgs,
+    config,
+    ...
+  }: {
     imports = [
       ./dconf.nix
     ];
@@ -75,7 +85,7 @@
       ];
     };
     services.gpg-agent = {
-    	enable = true;
+      enable = true;
       pinentryFlavor = "gnome3";
     };
     programs.kitty = {
@@ -83,19 +93,20 @@
       theme = "Catppuccin-Mocha";
       extraConfig = ''
         cursor_blinking_stop_blinking_after 0
-        linux_display_server x11
         mouse_hide_wait -1
       '';
+      # linux_display_server x11
     };
     programs.bat = {
       enable = true;
       themes = {
         catppuccin_mocha = builtins.readFile (pkgs.fetchFromGitHub {
-          owner = "catppuccin";
+            owner = "catppuccin";
             repo = "bat";
             rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
             sha256 = "1g2r6j33f4zys853i1c5gnwcdbwb6xv5w6pazfdslxf69904lrg9";
-          } + "/Catppuccin-mocha.tmTheme");
+          }
+          + "/Catppuccin-mocha.tmTheme");
       };
       config = {
         theme = "catppuccin_mocha";
@@ -108,11 +119,26 @@
         set fish_greeting
         fish_vi_key_bindings
       '';
+      shellInit = ''
+        any-nix-shell fish --info-right | source
+      '';
       plugins = [
-        { name = "z"; src = pkgs.fishPlugins.z.src; }
-        { name = "pisces"; src = pkgs.fishPlugins.pisces.src; }
-        { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
-        { name = "fzf"; src = pkgs.fishPlugins.fzf.src; }
+        {
+          name = "z";
+          src = pkgs.fishPlugins.z.src;
+        }
+        {
+          name = "pisces";
+          src = pkgs.fishPlugins.pisces.src;
+        }
+        {
+          name = "puffer";
+          src = pkgs.fishPlugins.puffer.src;
+        }
+        {
+          name = "fzf";
+          src = pkgs.fishPlugins.fzf.src;
+        }
       ];
     };
     programs.starship = {
@@ -149,14 +175,14 @@
       ];
     };
     programs.browserpass = {
-    	enable = true;
+      enable = true;
     };
     nixpkgs.config.allowUnfree = true;
     programs.chromium = {
-    	enable = true;
+      enable = true;
       package = pkgs.google-chrome;
       extensions = [
-        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }
+        {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";}
       ];
       commandLineArgs = [
         "--enable-features=UseOzonePlatform"
@@ -173,6 +199,15 @@
           name = "Webcord";
           exec = "${pkgs.webcord-vencord}/bin/webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
         };
+      };
+    };
+    programs.mpv = {
+      enable = true;
+      config = {
+        hwdec = "auto-safe";
+        vo = "gpu";
+        profile = "gpu-hq";
+        gpu-context = "wayland";
       };
     };
   };

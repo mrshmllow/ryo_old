@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   dconf.settings = {
     "org/gnome/builder/editor" = {
       keybindings = "vim";
@@ -41,7 +41,7 @@
     };
 
     "org/gnome/shell" = {
-      enabled-extensions = [ "appindicatorsupport@rgcjonas.gmail.com" "quick-settings-tweaks@qwreey" "blur-my-shell@aunetx" "rounded-window-corners@yilozt" ];
+      enabled-extensions = ["appindicatorsupport@rgcjonas.gmail.com" "quick-settings-tweaks@qwreey" "blur-my-shell@aunetx" "rounded-window-corners@yilozt"];
     };
 
     "org/gtk/gtk4/settings/file-chooser" = {

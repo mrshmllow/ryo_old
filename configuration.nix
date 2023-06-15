@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   nix.extraOptions = ''
-  	plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
+    plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
   '';
 
   # Bootloader.
@@ -13,13 +13,13 @@
   };
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
   };
 
   boot.kernelParams = [
-  	"preempt=voluntary"
-	  "intel_iommu=on"
-	  "iommu.passthrough=1"
+    "preempt=voluntary"
+    "intel_iommu=on"
+    "iommu.passthrough=1"
     "acpi_osi=\"!Windows 2020\""
     "nvme.noacpi=1"
     # "net.ifnames=0"
@@ -27,7 +27,7 @@
 
   networking.hostName = "marsh-framework";
   networking.wireless.userControlled.enable = true;
-  # networking.wireless.enable = true; 
+  # networking.wireless.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -57,7 +57,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.excludePackages = [ pkgs.xterm ];
+  services.xserver.excludePackages = [pkgs.xterm];
   services.xserver.desktopManager.xterm.enable = false;
 
   # Enable the GNOME Desktop Environment.
@@ -91,7 +91,7 @@
 
   services.thermald.enable = true;
 
-  environment.shells = with pkgs; [ fish ];
+  environment.shells = with pkgs; [fish];
   programs.fish.enable = true;
 
   # Enable automatic login for the user.
@@ -140,7 +140,7 @@
     gcc
     rustup
     wl-clipboard
-    
+
     # General Applications
     google-chrome
 
