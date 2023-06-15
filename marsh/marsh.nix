@@ -158,10 +158,22 @@
       extensions = [
         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }
       ];
+      commandLineArgs = [
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
+      ];
     };
     programs.nix-index = {
       enable = true;
       enableFishIntegration = true;
+    };
+    xdg = {
+      desktopEntries = {
+        webcord = {
+          name = "Webcord";
+          exec = "${pkgs.webcord-vencord}/bin/webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+        };
+      };
     };
   };
 }
