@@ -8,11 +8,6 @@
       dynamic-workspaces = true;
     };
 
-    "org/gnome/shell/extensions/quick-settings-tweaks" = {
-      user-removed-buttons = [ "RfkillToggle" ];
-      volume-mixer-enabled = false;
-    };
-
     "org/gnome/desktop/interface" = {
       clock-format = "12h";
       enable-hot-corners = false;
