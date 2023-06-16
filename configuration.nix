@@ -141,9 +141,6 @@
     rustup
     wl-clipboard
 
-    # General Applications
-    google-chrome
-
     # GNOME Extensions & Applications
     pinentry.gnome3
     pinentry

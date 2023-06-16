@@ -197,7 +197,13 @@
       desktopEntries = {
         webcord = {
           name = "Webcord";
+          icon = "webcord";
           exec = "${pkgs.webcord-vencord}/bin/webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+        };
+        google-chrome = {
+          name = "Google Chrome";
+          icon = "google-chrome";
+          exec = "${pkgs.google-chrome}/bin/google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland";
         };
       };
     };
