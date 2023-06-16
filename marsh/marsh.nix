@@ -96,6 +96,7 @@
       extraConfig = ''
         cursor_blinking_stop_blinking_after 0
         mouse_hide_wait -1
+        hide_window_decorations yes
       '';
       font.name = "FiraCode Nerd Font Mono";
       # linux_display_server x11
