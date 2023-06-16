@@ -173,6 +173,12 @@
   # services.openssh.enable = true;
 
   services.flatpak.enable = true;
+  services.flatpak.remotes = {
+    "flathub" = "https://flathub.org/repo/flathub.flatpakrepo";
+  };
+  services.flatpak.packages = [
+    "flathub:org.gnome.Builder"
+  ];
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

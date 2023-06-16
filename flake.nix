@@ -1,10 +1,12 @@
 {
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs";
+  inputs.flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
 
   outputs = {
     self,
     nixpkgs,
+    flatpaks,
     ...
   } @ attrs: {
     nixosConfigurations.marsh-framework = nixpkgs.lib.nixosSystem {
@@ -14,6 +16,7 @@
         ({pkgs, ...}: {
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
         })
+        flatpaks.nixosModules.default
         ./hardware-configuration.nix
         ./configuration.nix
         ./marsh/marsh.nix
