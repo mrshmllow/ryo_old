@@ -183,7 +183,8 @@
     "flathub" = "https://flathub.org/repo/flathub.flatpakrepo";
   };
   services.flatpak.packages = [
-    "flathub:org.gnome.Builder"
+    "flathub:org.gnome.Builder/x86_64/stable"
+    "flathub:xyz.armcord.ArmCord/x86_64/stable"
   ];
 
   # Before changing this value read the documentation for this option

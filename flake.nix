@@ -1,7 +1,7 @@
 {
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs";
-  inputs.flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
+  inputs.flatpaks.url = "github:GermanBread/declarative-flatpak/dev";
 
   outputs = {
     self,
