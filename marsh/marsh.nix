@@ -21,6 +21,8 @@
       # Code Stuff
       nodejs_20
       nodePackages_latest.pnpm
+      jetbrains.pycharm-professional
+      jetbrains.idea-ultimate
 
       # Extra fish stuff
       any-nix-shell
