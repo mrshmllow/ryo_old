@@ -188,10 +188,10 @@
       extensions = [
         {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";}
       ];
-      commandLineArgs = [
-        "--enable-features=UseOzonePlatform"
-        "--ozone-platform=wayland"
-      ];
+      # commandLineArgs = [
+      #   "--enable-features=UseOzonePlatform"
+      #   "--ozone-platform=wayland"
+      # ];
     };
     programs.nix-index = {
       enable = true;
@@ -199,16 +199,17 @@
     };
     xdg = {
       desktopEntries = {
-        webcord = {
-          name = "Webcord";
-          icon = "webcord";
-          exec = "${pkgs.webcord-vencord}/bin/webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-        };
-        google-chrome = {
-          name = "Google Chrome";
-          icon = "google-chrome";
-          exec = "${pkgs.google-chrome}/bin/google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland";
-        };
+        # webcord = {
+        #   name = "Webcord";
+        #   icon = "webcord";
+        #   exec = "${pkgs.webcord-vencord}/bin/webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+        # };
+
+        # google-chrome = {
+        #   name = "Google Chrome";
+        #   icon = "google-chrome";
+        #   exec = "${pkgs.google-chrome}/bin/google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland";
+        # };
       };
     };
     programs.mpv = {
