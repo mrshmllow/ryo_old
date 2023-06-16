@@ -25,6 +25,8 @@
     # "net.ifnames=0"
   ];
 
+  boot.plymouth.enable = true;
+
   networking.hostName = "marsh-framework";
   networking.wireless.userControlled.enable = true;
   # networking.wireless.enable = true;
