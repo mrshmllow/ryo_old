@@ -122,6 +122,9 @@
       interactiveShellInit = ''
         set fish_greeting
         fish_vi_key_bindings
+      '';
+      shellInit = ''
+        ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
 
         if test -n "$NVIM"
           set -x MANPAGER "${pkgs.neovim}/bin/nvim -c 'Man!' -o -"
