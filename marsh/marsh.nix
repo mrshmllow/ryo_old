@@ -124,11 +124,8 @@
         fish_vi_key_bindings
 
         if test -n "$NVIM"
-          set -x MANPAGER "/usr/local/bin/nvr -c 'Man!' -o -"
+          set -x MANPAGER "${pkgs.neovim}/bin/nvim -c 'Man!' -o -"
         end
-      '';
-      shellInit = ''
-        any-nix-shell fish --info-right | source
       '';
       plugins = [
         {
