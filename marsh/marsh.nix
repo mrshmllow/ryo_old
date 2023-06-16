@@ -97,6 +97,7 @@
         cursor_blinking_stop_blinking_after 0
         mouse_hide_wait -1
       '';
+      font.name = "FiraCode Nerd Font Mono";
       # linux_display_server x11
     };
     programs.bat = {
