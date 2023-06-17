@@ -140,6 +140,30 @@
 
         set -x MANPAGER "${pkgs.neovim}/bin/nvim -c 'Man!' -o -"
       '';
+      functions = {
+        pls = {
+          body = ''
+            if set -q argv[1]
+              set cmd $argv[1]
+
+              switch $cmd
+                case 'test'
+                    nixos-rebuild --use-remote-sudo test
+                case 'build'
+                    sudo nixos-rebuild --use-remote-sudo switch
+                case 'clean'
+                    sudo nix-collect-garbage -d
+                    nix store optimise
+                case '*'
+                    nix-shell -p $cmd
+              end
+            else
+              echo "Error: No command or package provided"
+              return 1
+            end
+          '';
+        };
+      };
       plugins = [
         {
           name = "z";
