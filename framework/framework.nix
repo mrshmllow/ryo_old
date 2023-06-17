@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -32,12 +32,21 @@
   networking.networkmanager.wifi.backend = "iwd";
 
   boot.kernelParams = [
-    "preempt=voluntary"
     "intel_iommu=on"
     "iommu.passthrough=1"
     "acpi_osi=\"!Windows 2020\""
     "nvme.noacpi=1"
   ];
+
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
 
   # Setup keyfile
   boot.initrd.secrets = {

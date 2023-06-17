@@ -12,6 +12,7 @@
   };
 
   boot.kernelParams = [
+    "preempt=voluntary"
   ];
 
   boot.plymouth.enable = true;
@@ -84,16 +85,6 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -115,10 +106,6 @@
   fonts.fonts = with pkgs; [
     (nerdfonts.override {fonts = ["FiraCode"];})
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
 
   programs.gnupg.agent = {
     enable = true;
