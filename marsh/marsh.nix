@@ -27,9 +27,6 @@
       jetbrains.idea-ultimate
       bun
 
-      # Extra fish stuff
-      any-nix-shell
-
       # Neovim stuff
       lua-language-server
       rust-analyzer
