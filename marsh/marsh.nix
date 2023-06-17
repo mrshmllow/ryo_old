@@ -36,7 +36,6 @@
       nodePackages_latest.vscode-css-languageserver-bin
       nodePackages_latest.typescript-language-server
       nodePackages_latest."@tailwindcss/language-server"
-
       nodePackages."@fsouza/prettierd"
     ];
   };
@@ -78,6 +77,7 @@
     programs.gpg = {
       enable = true;
       homedir = "${config.xdg.dataHome}/gnupg";
+      settings = { keyserver = "hkps://keys.openpgp.org"; };
       publicKeys = [
         {
           source = builtins.fetchurl {
