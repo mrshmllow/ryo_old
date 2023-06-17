@@ -1,5 +1,5 @@
 {
-  pkgs,
+  extendedPkgs,
   home-manager,
   ...
 }: {
@@ -12,10 +12,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marsh = {
     isNormalUser = true;
-    shell = pkgs.fish;
+    shell = extendedPkgs.fish;
     description = "marsh";
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
+    packages = with extendedPkgs; [
       webcord-vencord
       ripgrep
       flatpak-builder
@@ -40,8 +40,7 @@
       nodePackages_latest.typescript-language-server
       nodePackages_latest."@tailwindcss/language-server"
 
-      # Not available!
-      # nodePackages_latest."@fsouza/prettierd"
+      nodePackages."@fsouza/prettierd"
     ];
   };
 
@@ -196,10 +195,9 @@
     programs.browserpass = {
       enable = true;
     };
-    nixpkgs.config.allowUnfree = true;
     programs.chromium = {
       enable = true;
-      package = pkgs.google-chrome;
+      package = extendedPkgs.google-chrome;
       extensions = [
         {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";}
       ];

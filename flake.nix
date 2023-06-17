@@ -8,10 +8,30 @@
     nixpkgs,
     flatpaks,
     ...
-  } @ attrs: {
-    nixosConfigurations.marsh-framework = nixpkgs.lib.nixosSystem {
+  } @ attrs: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      config.allowUnfree = true;
+      system = system;
+    };
+    nodePackages = import ./node-packages/default.nix {
+      inherit pkgs;
       system = "x86_64-linux";
-      specialArgs = attrs;
+      nodejs = pkgs.nodejs_20;
+    };
+    extendedPkgs =
+      pkgs
+      // {
+        nodePackages = pkgs.nodePackages // nodePackages;
+      };
+  in {
+    nixosConfigurations.marsh-framework = nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs =
+        attrs
+        // {
+          inherit extendedPkgs;
+        };
       modules = [
         ({pkgs, ...}: {
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
