@@ -1,7 +1,12 @@
 {
-  inputs.home-manager.url = "github:nix-community/home-manager";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs";
-  inputs.flatpaks.url = "github:GermanBread/declarative-flatpak/dev";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    flatpaks.url = "github:GermanBread/declarative-flatpak/dev";
+  };
 
   outputs = {
     self,
@@ -11,8 +16,8 @@
   } @ attrs: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
+      inherit system;
       config.allowUnfree = true;
-      system = system;
     };
     nodePackages = import ./node-packages/default.nix {
       inherit pkgs;
