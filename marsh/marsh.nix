@@ -53,6 +53,7 @@
     # xdg.enable = true;
     home.shellAliases = {
       cat = "bat";
+      tree = "exa --tree";
     };
     gtk = {
       enable = true;
