@@ -185,6 +185,7 @@
   services.flatpak.packages = [
     "flathub:org.gnome.Builder/x86_64/stable"
     "flathub:xyz.armcord.ArmCord/x86_64/stable"
+    "flathub:org.gimp.GIMP/x86_64/stable"
   ];
 
   # Before changing this value read the documentation for this option
