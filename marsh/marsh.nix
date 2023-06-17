@@ -164,6 +164,20 @@
     programs.starship = {
       enable = true;
       enableFishIntegration = true;
+      settings = {
+        # black, red, green, blue, yellow, purple, cyan, white
+        character = {
+          success_symbol = "[>](bold purple)";
+          error_symbol = "[>](bold red)";
+          vimcmd_symbol = "[<](bold purple)";
+          vimcmd_replace_one_symbol = "[<](bold red)";
+          vimcmd_replace_symbol = "[<](bold red)";
+          vimcmd_visual_symbol = "[<](bold cyan)";
+        };
+        directory = {
+          style = "bold purple";
+        };
+      };
     };
     programs.password-store = {
       enable = true;
