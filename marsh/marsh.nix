@@ -138,9 +138,7 @@
 
         set fish_cursor_insert line
 
-        if test -n "$NVIM"
-          set -x MANPAGER "${pkgs.neovim}/bin/nvim -c 'Man!' -o -"
-        end
+        set -x MANPAGER "${pkgs.neovim}/bin/nvim -c 'Man!' -o -"
       '';
       plugins = [
         {
