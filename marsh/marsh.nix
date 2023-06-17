@@ -132,6 +132,8 @@
       interactiveShellInit = ''
         set fish_greeting
         fish_vi_key_bindings
+
+        ${pkgs.krabby}/bin/krabby name marshadow --no-title
       '';
       shellInit = ''
         ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
