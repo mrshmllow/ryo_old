@@ -17,8 +17,8 @@
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
         })
         flatpaks.nixosModules.default
-        ./hardware-configuration.nix
-        ./configuration.nix
+        ./common.nix
+        ./framework/framework.nix
         ./marsh/marsh.nix
       ];
     };

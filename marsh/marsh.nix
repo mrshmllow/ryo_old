@@ -7,6 +7,8 @@
     home-manager.nixosModule
   ];
 
+  services.xserver.displayManager.autoLogin.user = "marsh";
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marsh = {
     isNormalUser = true;
@@ -23,6 +25,7 @@
       nodePackages_latest.pnpm
       jetbrains.pycharm-professional
       jetbrains.idea-ultimate
+      bun
 
       # Extra fish stuff
       any-nix-shell
@@ -35,8 +38,10 @@
       nodePackages_latest.pyright
       nodePackages_latest.vscode-css-languageserver-bin
       nodePackages_latest.typescript-language-server
-      nodePackages_latest.prettier_d_slim
-      nodePackages."@tailwindcss/language-server"
+      nodePackages_latest."@tailwindcss/language-server"
+
+      # Not available!
+      # nodePackages_latest."@fsouza/prettierd"
     ];
   };
 
@@ -97,6 +102,7 @@
         cursor_blinking_stop_blinking_after 0
         mouse_hide_wait -1
         hide_window_decorations yes
+        window_padding_width 10
       '';
       font.name = "FiraCode Nerd Font Mono";
       # linux_display_server x11
@@ -114,6 +120,11 @@
       };
       config = {
         theme = "catppuccin_mocha";
+        style = [
+          "changes"
+          "header"
+          "numbers"
+        ];
       };
     };
     programs.lazygit.enable = true;
