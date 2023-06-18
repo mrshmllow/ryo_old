@@ -132,6 +132,7 @@
     "flathub:org.gnome.Builder/x86_64/stable"
     "flathub:xyz.armcord.ArmCord/x86_64/stable"
     "flathub:org.gimp.GIMP/x86_64/stable"
+    "flathub:org.gnome.Platform/x86_64/44"
   ];
 
   system.stateVersion = "23.05";
