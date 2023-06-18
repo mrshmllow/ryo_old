@@ -89,6 +89,9 @@
         directory = {
           style = "bold purple";
         };
+        aws = {
+          disabled = true;
+        };
       };
     };
     programs.password-store = {
