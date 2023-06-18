@@ -78,6 +78,7 @@
 
   environment.shells = with pkgs; [fish];
   programs.fish.enable = true;
+  environment.pathsToLink = ["/share/bash-completion"];
 
   services.xserver.displayManager.autoLogin.enable = true;
 

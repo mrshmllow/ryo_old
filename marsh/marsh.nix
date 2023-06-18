@@ -47,50 +47,18 @@
   }: {
     imports = [
       ./dconf.nix
+      ./programs/shell.nix
+      ./programs/bat.nix
+      ./programs/git.nix
+      ./programs/gpg.nix
     ];
     home.stateVersion = "23.11";
-    # xdg.enable = true;
-    home.shellAliases = {
-      cat = "bat";
-      tree = "exa --tree";
-    };
     gtk = {
       enable = true;
       theme = {
         name = "adw-gtk3";
         package = pkgs.adw-gtk3;
       };
-    };
-    programs.git = {
-      enable = true;
-      package = pkgs.gitAndTools.gitFull;
-      signing = {
-        key = "CE4CECD4861112D38ED3393A767B8880F5AAEB9C";
-        signByDefault = true;
-      };
-      userEmail = "marshycity@gmail.com";
-      userName = "marshmallow";
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
-    };
-    programs.gpg = {
-      enable = true;
-      homedir = "${config.xdg.dataHome}/gnupg";
-      settings = { keyserver = "hkps://keys.openpgp.org"; };
-      publicKeys = [
-        {
-          source = builtins.fetchurl {
-            url = "https://github.com/mrshmllow.gpg";
-            sha256 = "1qrdp3hdi891k4v4mzrapcc1gjh1g99yzxx02lrn4im2jl2mzcln";
-          };
-          trust = 5;
-        }
-      ];
-    };
-    services.gpg-agent = {
-      enable = true;
-      pinentryFlavor = "gnome3";
     };
     programs.kitty = {
       enable = true;
@@ -104,85 +72,7 @@
       font.name = "FiraCode Nerd Font Mono";
       # linux_display_server x11
     };
-    programs.bat = {
-      enable = true;
-      themes = {
-        catppuccin_mocha = builtins.readFile (pkgs.fetchFromGitHub {
-            owner = "catppuccin";
-            repo = "bat";
-            rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-            sha256 = "1g2r6j33f4zys853i1c5gnwcdbwb6xv5w6pazfdslxf69904lrg9";
-          }
-          + "/Catppuccin-mocha.tmTheme");
-      };
-      config = {
-        theme = "catppuccin_mocha";
-        style = [
-          "changes"
-          "header"
-          "numbers"
-        ];
-      };
-    };
     programs.lazygit.enable = true;
-    programs.fish = {
-      enable = true;
-      interactiveShellInit = ''
-        set fish_greeting
-        fish_vi_key_bindings
-
-        ${pkgs.krabby}/bin/krabby name marshadow --no-title
-      '';
-      shellInit = ''
-        ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
-
-        set fish_cursor_insert line
-
-        set -x MANPAGER "${pkgs.neovim}/bin/nvim -c 'Man!' -o -"
-      '';
-      functions = {
-        pls = {
-          body = ''
-            if set -q argv[1]
-              set cmd $argv[1]
-
-              switch $cmd
-                case 'test'
-                    nixos-rebuild --use-remote-sudo test
-                case 'build'
-                    sudo nixos-rebuild --use-remote-sudo switch
-                case 'clean'
-                    sudo nix-collect-garbage -d
-                    nix store optimise
-                case '*'
-                    nix-shell -p $cmd
-              end
-            else
-              echo "Error: No command or package provided"
-              return 1
-            end
-          '';
-        };
-      };
-      plugins = [
-        {
-          name = "z";
-          src = pkgs.fishPlugins.z.src;
-        }
-        {
-          name = "pisces";
-          src = pkgs.fishPlugins.pisces.src;
-        }
-        {
-          name = "puffer";
-          src = pkgs.fishPlugins.puffer.src;
-        }
-        {
-          name = "fzf";
-          src = pkgs.fishPlugins.fzf.src;
-        }
-      ];
-    };
     programs.starship = {
       enable = true;
       enableFishIntegration = true;
@@ -206,19 +96,6 @@
       settings = {
         PASSWORD_STORE_KEY = "CE4CECD4861112D38ED3393A767B8880F5AAEB9C";
       };
-    };
-    programs.mr = {
-      enable = true;
-      settings = {
-        "${config.xdg.dataHome}/password-store" = {
-          checkout = "git clone git@github.com:mrshmllow/pass.git";
-        };
-      };
-    };
-    programs.gh = {
-      enable = true;
-      enableGitCredentialHelper = true;
-      settings.git_protocol = "ssh";
     };
     programs.exa = {
       enable = true;
