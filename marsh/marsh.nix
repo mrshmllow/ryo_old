@@ -249,6 +249,12 @@
       enableFishIntegration = true;
     };
     xdg = {
+      enable = true;
+      userDirs = {
+        enable = true;
+        createDirectories = true;
+        desktop = null;
+      };
       desktopEntries = {
         # webcord = {
         #   name = "Webcord";
