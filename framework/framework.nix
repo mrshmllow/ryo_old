@@ -52,4 +52,11 @@
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
   };
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 }
