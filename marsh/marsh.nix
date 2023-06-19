@@ -31,6 +31,7 @@
       lua-language-server
       rust-analyzer
       nil
+      stylua
       alejandra
       nodePackages_latest.pyright
       nodePackages_latest.vscode-css-languageserver-bin
