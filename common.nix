@@ -135,6 +135,7 @@
     "flathub:org.gnome.Platform/x86_64/44"
     "flathub:org.gnome.Boxes/x86_64/stable"
     "flathub:com.transmissionbt.Transmission/x86_64/stable"
+    "flathub:app/org.blender.Blender/x86_64/stable"
   ];
 
   system.stateVersion = "23.05";
