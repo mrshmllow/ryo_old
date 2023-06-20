@@ -91,6 +91,9 @@
   environment.systemPackages = with pkgs; [
     wl-clipboard
 
+    # Fonts
+    source-han-sans
+
     # GNOME Extensions & Applications
     pinentry.gnome3
     pinentry
