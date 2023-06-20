@@ -6,6 +6,7 @@
   home.shellAliases = {
     cat = "bat";
     tree = "exa --tree";
+    gen_pdf = "pandoc --pdf-engine=xelatex -V geometry:margin=1in -V 'mainfont:DejaVu Serif' -V 'sansfont:DejaVu Sans' -V 'monofont:FiraCode Nerd Font'";
   };
   programs.fish = {
     enable = true;
