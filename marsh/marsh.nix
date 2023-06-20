@@ -19,6 +19,8 @@
       webcord-vencord
       ripgrep
       flatpak-builder
+      gcc
+      rustup
 
       # Code Stuff
       nodejs_20

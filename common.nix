@@ -89,8 +89,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    gcc
-    rustup
     wl-clipboard
 
     # GNOME Extensions & Applications
