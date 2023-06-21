@@ -91,9 +91,6 @@
   environment.systemPackages = with pkgs; [
     wl-clipboard
 
-    # Fonts
-    source-han-sans
-
     # GNOME Extensions & Applications
     pinentry.gnome3
     pinentry
@@ -105,9 +102,18 @@
     gnomeExtensions.appindicator
   ];
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override {fonts = ["FiraCode"];})
-  ];
+  fonts = {
+    enableDefaultFonts = true;
+    fonts = with pkgs; [
+      source-han-sans
+      (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+    ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "JetBrainsMono" ];
+      };
+    };
+  };
 
   programs.gnupg.agent = {
     enable = true;

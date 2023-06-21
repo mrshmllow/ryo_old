@@ -74,7 +74,7 @@
         hide_window_decorations yes
         window_padding_width 10
       '';
-      font.name = "FiraCode Nerd Font Mono";
+      font.name = "JetBrainsMono Nerd Font Mono";
       # linux_display_server x11
     };
     programs.lazygit.enable = true;
