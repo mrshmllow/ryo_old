@@ -22,6 +22,8 @@
       gcc
       rustup
 
+      neovide
+
       # Code Stuff
       nodejs_20
       nodePackages_latest.pnpm
