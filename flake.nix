@@ -17,26 +17,25 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
-      config.allowUnfree = true;
     };
     nodePackages = import ./node-packages/default.nix {
       inherit pkgs;
       system = "x86_64-linux";
       nodejs = pkgs.nodejs_20;
     };
-    extendedPkgs =
-      pkgs
-      // {
-        nodePackages = pkgs.nodePackages // nodePackages;
-      };
+    extendedPkgs = import nixpkgs {
+      system = "x86_64-linux";
+      config = { allowUnfree = true; };
+    } // {
+      nodePackages = pkgs.nodePackages // nodePackages;
+    };
   in {
     nixosConfigurations.marsh-framework = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs =
-        attrs
-        // {
-          inherit extendedPkgs;
-        };
+      specialArgs = attrs // { 
+        inherit extendedPkgs; 
+        nixpkgs.config.allowUnfree = true; 
+      };
       modules = [
         ({pkgs, ...}: {
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;

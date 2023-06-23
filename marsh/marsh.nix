@@ -3,6 +3,8 @@
   home-manager,
   ...
 }: {
+  nixpkgs.config.allowUnfree = true; 
+
   imports = [
     home-manager.nixosModule
   ];
@@ -50,6 +52,7 @@
     config,
     ...
   }: {
+    nixpkgs.config.allowUnfree = true;
     imports = [
       ./dconf.nix
       ./programs/shell.nix
@@ -152,6 +155,11 @@
         #   icon = "google-chrome";
         #   exec = "${pkgs.google-chrome}/bin/google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland";
         # };
+        steam = {
+          name = "Steam";
+          icon = "steam";
+          exec = "STEAM_FORCE_DESKTOPUI_SCALING=2 ${pkgs.steam}/bin/steam %U";
+        };
       };
     };
     programs.mpv = {

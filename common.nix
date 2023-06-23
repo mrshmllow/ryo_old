@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  nixpkgs.config.allowUnfree = true; 
+
   nix.extraOptions = ''
     plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
   '';
@@ -126,6 +128,12 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
   };
 
   # Enable the OpenSSH daemon.
