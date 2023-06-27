@@ -6,12 +6,15 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     flatpaks.url = "github:GermanBread/declarative-flatpak/dev";
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = {
     self,
     nixpkgs,
     flatpaks,
+    neovim-nightly-overlay,
     ...
   } @ attrs: let
     system = "x86_64-linux";

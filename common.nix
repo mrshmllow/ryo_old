@@ -1,5 +1,9 @@
-{pkgs, ...}: {
+{pkgs, neovim-nightly-overlay, ...}: {
   nixpkgs.config.allowUnfree = true; 
+
+  nixpkgs.overlays = [
+    neovim-nightly-overlay.overlay 
+  ];
 
   nix.extraOptions = ''
     plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
@@ -107,6 +111,8 @@
     gnomeExtensions.rounded-window-corners
     gnomeExtensions.caffeine
     gnomeExtensions.appindicator
+
+    neovim-nightly
   ];
 
   fonts = {
