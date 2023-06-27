@@ -16,7 +16,7 @@
     isNormalUser = true;
     shell = extendedPkgs.fish;
     description = "marsh";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with extendedPkgs; [
       webcord-vencord
       ripgrep
