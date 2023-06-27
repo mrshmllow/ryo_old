@@ -44,7 +44,9 @@
       nodePackages_latest.vscode-css-languageserver-bin
       nodePackages_latest.typescript-language-server
       nodePackages_latest."@tailwindcss/language-server"
+      nodePackages_latest.vscode-json-languageserver-bin
       nodePackages."@fsouza/prettierd"
+      nodePackages.mermaid-cli
     ];
   };
 
