@@ -26,6 +26,8 @@
 
       neovide
       texlive.combined.scheme-full.out
+      pandoc
+      yt-dlp
 
       # Code Stuff
       nodejs_20
