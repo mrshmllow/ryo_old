@@ -25,6 +25,7 @@
       rustup
 
       neovide
+      texlive.combined.scheme-full.out
 
       # Code Stuff
       nodejs_20
