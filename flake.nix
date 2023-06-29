@@ -8,6 +8,7 @@
     flatpaks.url = "github:GermanBread/declarative-flatpak/dev";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
   outputs = {
@@ -15,6 +16,7 @@
     nixpkgs,
     flatpaks,
     neovim-nightly-overlay,
+    emacs-overlay,
     ...
   } @ attrs: let
     system = "x86_64-linux";
@@ -23,11 +25,11 @@
     };
     nodePackages = import ./node-packages/default.nix {
       inherit pkgs;
-      system = "x86_64-linux";
+      inherit system;
       nodejs = pkgs.nodejs_20;
     };
     extendedPkgs = import nixpkgs {
-      system = "x86_64-linux";
+      inherit system;
       config = { allowUnfree = true; };
     } // {
       nodePackages = pkgs.nodePackages // nodePackages;

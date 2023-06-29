@@ -1,8 +1,9 @@
-{pkgs, neovim-nightly-overlay, ...}: {
+{pkgs, neovim-nightly-overlay, emacs-overlay, ...}: {
   nixpkgs.config.allowUnfree = true; 
 
   nixpkgs.overlays = [
     neovim-nightly-overlay.overlay 
+    emacs-overlay.overlay
   ];
 
   nix.extraOptions = ''
@@ -113,6 +114,7 @@
     gnomeExtensions.appindicator
 
     neovim-nightly
+    emacs-unstable
   ];
 
   fonts = {
@@ -127,6 +129,8 @@
       };
     };
   };
+
+  services.emacs.enable = true;
 
   programs.gnupg.agent = {
     enable = true;
