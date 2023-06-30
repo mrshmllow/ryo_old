@@ -59,4 +59,30 @@
       size = 16 * 1024;
     }
   ];
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.kernelParams = [
+    "preempt=voluntary"
+  ];
+
+  boot.plymouth.enable = true;
+
+  services.flatpak.enable = true;
+  services.flatpak.remotes = {
+    "flathub" = "https://flathub.org/repo/flathub.flatpakrepo";
+  };
+  services.flatpak.packages = [
+    "flathub:org.gnome.Builder/x86_64/stable"
+    "flathub:xyz.armcord.ArmCord/x86_64/stable"
+    "flathub:org.gimp.GIMP/x86_64/stable"
+    "flathub:org.gnome.Platform/x86_64/44"
+    "flathub:org.gnome.Boxes/x86_64/stable"
+    "flathub:com.transmissionbt.Transmission/x86_64/stable"
+    "flathub:org.blender.Blender/x86_64/stable"
+  ];
+
+  system.stateVersion = "23.05";
 }
