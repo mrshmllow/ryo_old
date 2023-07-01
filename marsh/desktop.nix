@@ -4,6 +4,13 @@
 }: {
   services.xserver.displayManager.autoLogin.user = "marsh";
 
+  users.users.marsh = {
+    packages = with extendedPkgs; [
+      jetbrains.pycharm-community
+      jetbrains.idea-community
+    ];
+  };
+
   home-manager.users.marsh = {
     pkgs,
     config,

@@ -30,8 +30,6 @@
       # Code Stuff
       nodejs_20
       nodePackages_latest.pnpm
-      jetbrains.pycharm-community
-      jetbrains.idea-community
       bun
 
       # Neovim stuff
