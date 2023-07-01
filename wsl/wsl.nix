@@ -1,4 +1,4 @@
-{ lib, pkgs, config, modulesPath, wsl, ... }: {
+{ pkgs, wsl, ... }: {
   imports = [
     wsl.nixosModules.wsl
   ];
@@ -21,6 +21,8 @@
     # docker-desktop.enable = true;
 
   };
+
+  networking.hostName = "marsh-wsl";
 
   # Enable nix flakes
   nix.package = pkgs.nixFlakes;
