@@ -50,8 +50,10 @@
         })
         flatpaks.nixosModules.default
         ./common.nix
+        ./desktop.nix
         ./framework/framework.nix
         ./marsh/marsh.nix
+        ./marsh/desktop.nix
       ];
     };
     nixosConfigurations.marsh-wsl = nixpkgs.lib.nixosSystem {

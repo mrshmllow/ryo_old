@@ -9,8 +9,6 @@
     home-manager.nixosModule
   ];
 
-  services.xserver.displayManager.autoLogin.user = "marsh";
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marsh = {
     isNormalUser = true;
@@ -59,20 +57,12 @@
   }: {
     nixpkgs.config.allowUnfree = true;
     imports = [
-      ./dconf.nix
       ./programs/shell.nix
       ./programs/bat.nix
       ./programs/git.nix
       ./programs/gpg.nix
     ];
     home.stateVersion = "23.11";
-    gtk = {
-      enable = true;
-      theme = {
-        name = "adw-gtk3";
-        package = pkgs.adw-gtk3;
-      };
-    };
     programs.kitty = {
       enable = true;
       theme = "Catppuccin-Mocha";
@@ -126,17 +116,6 @@
     programs.browserpass = {
       enable = true;
     };
-    programs.chromium = {
-      enable = true;
-      package = extendedPkgs.google-chrome;
-      extensions = [
-        {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";}
-      ];
-      # commandLineArgs = [
-      #   "--enable-features=UseOzonePlatform"
-      #   "--ozone-platform=wayland"
-      # ];
-    };
     programs.nix-index = {
       enable = true;
       enableFishIntegration = true;
@@ -148,24 +127,6 @@
         createDirectories = true;
         desktop = null;
       };
-      desktopEntries = {
-        # webcord = {
-        #   name = "Webcord";
-        #   icon = "webcord";
-        #   exec = "${pkgs.webcord-vencord}/bin/webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-        # };
-
-        # google-chrome = {
-        #   name = "Google Chrome";
-        #   icon = "google-chrome";
-        #   exec = "${pkgs.google-chrome}/bin/google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland";
-        # };
-        steam = {
-          name = "Steam";
-          icon = "steam";
-          exec = "STEAM_FORCE_DESKTOPUI_SCALING=2 ${pkgs.steam}/bin/steam %U";
-        };
-      };
     };
     programs.emacs = {
       enable = true;
@@ -176,7 +137,6 @@
         hwdec = "auto-safe";
         vo = "gpu";
         profile = "gpu-hq";
-        gpu-context = "wayland";
       };
     };
   };
