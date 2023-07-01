@@ -36,6 +36,7 @@
     "iommu.passthrough=1"
     "acpi_osi=\"!Windows 2020\""
     "nvme.noacpi=1"
+    "preempt=voluntary"
   ];
 
   hardware.opengl = {
@@ -63,10 +64,6 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.kernelParams = [
-    "preempt=voluntary"
-  ];
 
   boot.plymouth.enable = true;
 
