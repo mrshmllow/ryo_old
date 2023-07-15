@@ -79,6 +79,9 @@
     "flathub:org.gnome.Boxes/x86_64/stable"
     "flathub:com.transmissionbt.Transmission/x86_64/stable"
     "flathub:org.blender.Blender/x86_64/stable"
+    "flathub:im.riot.Riot/x86_64/stable"
+    "flathub:rest.insomnia.Insomnia/x86_64/stable"
+    "flathub:md.obsidian.Obsidian/x86_64/stable"
   ];
 
   system.stateVersion = "23.05";
