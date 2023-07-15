@@ -43,6 +43,7 @@
       nodePackages_latest.typescript-language-server
       nodePackages_latest."@tailwindcss/language-server"
       nodePackages_latest.vscode-json-languageserver-bin
+      nodePackages_latest.yaml-language-server
       nodePackages."@fsouza/prettierd"
       nodePackages.mermaid-cli
     ];
