@@ -21,6 +21,7 @@
     gnomeExtensions.rounded-window-corners
     gnomeExtensions.caffeine
     gnomeExtensions.appindicator
+    gnomeExtensions.caffeine
   ];
   
   # Enable the GNOME Desktop Environment.
