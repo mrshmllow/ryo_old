@@ -14,9 +14,12 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting
-      fish_vi_key_bindings
 
-      ${pkgs.krabby}/bin/krabby name marshadow --no-title
+      function fish_greeting
+        ${pkgs.krabby}/bin/krabby name marshadow --no-title
+      end
+
+      fish_vi_key_bindings
     '';
     shellInit = ''
       ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
@@ -45,6 +48,14 @@
           else
             echo "Error: No command or package provided"
             return 1
+          end
+        '';
+      };
+      catch_em_all = {
+        body = ''
+          while true
+            ${pkgs.krabby}/bin/krabby random
+            sleep 1
           end
         '';
       };
