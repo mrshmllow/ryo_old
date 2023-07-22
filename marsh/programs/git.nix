@@ -14,6 +14,9 @@
     userName = "marshmallow";
     extraConfig = {
       init.defaultBranch = "main";
+      http = {
+        postBuffer = 157286400;
+      };
     };
   };
   programs.mr = {
