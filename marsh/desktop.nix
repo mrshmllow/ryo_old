@@ -39,6 +39,9 @@
       config = {
         gpu-context = "wayland";
       };
+      scripts = with pkgs; [
+        mpvScripts.webtorrent-mpv-hook
+      ];
     };
     programs.chromium = {
       enable = true;
