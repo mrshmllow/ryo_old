@@ -82,6 +82,7 @@
     "flathub:im.riot.Riot/x86_64/stable"
     "flathub:rest.insomnia.Insomnia/x86_64/stable"
     "flathub:md.obsidian.Obsidian/x86_64/stable"
+    "flathub:com.usebottles.bottles/x86_64/stable"
   ];
 
   system.stateVersion = "23.05";
