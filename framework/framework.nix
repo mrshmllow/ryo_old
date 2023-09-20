@@ -72,17 +72,17 @@
     "flathub" = "https://flathub.org/repo/flathub.flatpakrepo";
   };
   services.flatpak.packages = [
-    "flathub:org.gnome.Builder/x86_64/stable"
-    "flathub:xyz.armcord.ArmCord/x86_64/stable"
-    "flathub:org.gimp.GIMP/x86_64/stable"
-    "flathub:org.gnome.Platform/x86_64/44"
-    "flathub:org.gnome.Boxes/x86_64/stable"
-    "flathub:com.transmissionbt.Transmission/x86_64/stable"
-    "flathub:org.blender.Blender/x86_64/stable"
-    "flathub:im.riot.Riot/x86_64/stable"
-    "flathub:rest.insomnia.Insomnia/x86_64/stable"
-    "flathub:md.obsidian.Obsidian/x86_64/stable"
-    "flathub:com.usebottles.bottles/x86_64/stable"
+    "flathub:app/org.gnome.Builder/x86_64/stable"
+    "flathub:app/xyz.armcord.ArmCord/x86_64/stable"
+    "flathub:app/org.gimp.GIMP/x86_64/stable"
+    "flathub:app/org.gnome.Boxes/x86_64/stable"
+    "flathub:app/com.transmissionbt.Transmission/x86_64/stable"
+    "flathub:app/org.blender.Blender/x86_64/stable"
+    "flathub:app/im.riot.Riot/x86_64/stable"
+    "flathub:app/rest.insomnia.Insomnia/x86_64/stable"
+    "flathub:app/md.obsidian.Obsidian/x86_64/stable"
+    "flathub:app/com.usebottles.bottles/x86_64/stable"
+    "flathub:runtime/org.gnome.Platform/x86_64/44"
   ];
 
   system.stateVersion = "23.05";
