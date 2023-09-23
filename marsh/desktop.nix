@@ -28,11 +28,11 @@
     };
     xdg = {
       desktopEntries = {
-        steam = {
-          name = "Steam";
-          icon = "steam";
-          exec = "STEAM_FORCE_DESKTOPUI_SCALING=2 ${pkgs.steam}/bin/steam %U";
-        };
+        # steam = {
+        #   name = "Steam";
+        #   icon = "steam";
+        #   exec = "STEAM_FORCE_DESKTOPUI_SCALING=2 ${pkgs.steam}/bin/steam %U";
+        # };
       };
     };
     programs.mpv = {

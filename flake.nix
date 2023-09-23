@@ -1,6 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    #nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -10,7 +11,7 @@
     flatpaks.url = "github:GermanBread/declarative-flatpak/dev";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs.url = "github:nix-community/emacs-overlay";
 
     wsl.url = "github:nix-community/NixOS-WSL";
   };
@@ -20,7 +21,7 @@
     nixpkgs,
     flatpaks,
     neovim-nightly-overlay,
-    emacs-overlay,
+    emacs,
     wsl,
     ...
   } @ attrs: let
@@ -56,6 +57,7 @@
         ./framework/framework.nix
         ./marsh/marsh.nix
         ./marsh/desktop.nix
+        # ./pi/pi.nix
       ];
     };
     nixosConfigurations.marsh-wsl = nixpkgs.lib.nixosSystem {

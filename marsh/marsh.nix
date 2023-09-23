@@ -23,7 +23,7 @@
       rustup
 
       neovide
-      texlive.combined.scheme-full.out
+      # texlive.combined.scheme-full.out
       pandoc
       yt-dlp
 

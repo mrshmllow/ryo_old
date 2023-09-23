@@ -29,9 +29,7 @@
   };
   programs.gh = {
     enable = true;
-    gitCredentialHelper = {
-      enable = true;
-    };
+    enableGitCredentialHelper = true;
     settings.git_protocol = "ssh";
   };
 }

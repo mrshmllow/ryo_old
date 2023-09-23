@@ -1,9 +1,9 @@
-{pkgs, neovim-nightly-overlay, emacs-overlay, ...}: {
+{pkgs, neovim-nightly-overlay, emacs, ...}: {
   nixpkgs.config.allowUnfree = true; 
 
   nixpkgs.overlays = [
-    neovim-nightly-overlay.overlay 
-    emacs-overlay.overlay
+    # neovim-nightly-overlay.overlay 
+    # emacs-overlay.overlay
   ];
 
   nix.extraOptions = ''
@@ -73,7 +73,7 @@
   environment.pathsToLink = ["/share/bash-completion"];
 
   environment.systemPackages = with pkgs; [
-    neovim-nightly
+    # neovim-nightly
     # emacs-unstable
   ];
 
