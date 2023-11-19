@@ -5,7 +5,7 @@
 }: {
   home.shellAliases = {
     cat = "bat";
-    tree = "exa --tree";
+    tree = "eza --tree";
     gen_pdf = "pandoc --pdf-engine=xelatex -V geometry:margin=1in -V 'mainfont:DejaVu Serif' -V 'sansfont:DejaVu Sans' -V 'monofont:FiraCode Nerd Font'";
     icat = "kitty +kitten icat";
     note = "vim -c ':lua require(\"orgmode.capture\"):new():open_template_by_shortcut(\"n\")' -c ':lua vim.api.nvim_win_close(1000, false)'";

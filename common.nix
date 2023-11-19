@@ -1,10 +1,5 @@
-{pkgs, neovim-nightly-overlay, emacs, ...}: {
+{ pkgs, ... }: {
   nixpkgs.config.allowUnfree = true; 
-
-  nixpkgs.overlays = [
-    # neovim-nightly-overlay.overlay 
-    # emacs-overlay.overlay
-  ];
 
   nix.extraOptions = ''
     plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
@@ -72,14 +67,9 @@
   programs.fish.enable = true;
   environment.pathsToLink = ["/share/bash-completion"];
 
-  environment.systemPackages = with pkgs; [
-    # neovim-nightly
-    # emacs-unstable
-  ];
-
   fonts = {
-    enableDefaultFonts = true;
-    fonts = with pkgs; [
+    enableDefaultPackages = true;
+    packages = with pkgs; [
       source-han-sans
       (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
     ];

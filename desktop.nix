@@ -1,4 +1,4 @@
-{pkgs, neovim-nightly-overlay, emacs-overlay, ...}: {
+{ pkgs, ... }: {
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

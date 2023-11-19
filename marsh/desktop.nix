@@ -1,11 +1,11 @@
 {
-  extendedPkgs,
+  pkgs,
   ...
 }: {
   services.xserver.displayManager.autoLogin.user = "marsh";
 
   users.users.marsh = {
-    packages = with extendedPkgs; [
+    packages = with pkgs; [
       jetbrains.pycharm-community
       jetbrains.idea-community
     ];
@@ -45,7 +45,7 @@
     };
     programs.chromium = {
       enable = true;
-      package = extendedPkgs.google-chrome;
+      package = pkgs.google-chrome;
       extensions = [
         {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";}
       ];

@@ -1,5 +1,5 @@
 {
-  extendedPkgs,
+  pkgs,
   home-manager,
   ...
 }: {
@@ -12,10 +12,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marsh = {
     isNormalUser = true;
-    shell = extendedPkgs.fish;
+    shell = pkgs.fish;
     description = "marsh";
     extraGroups = ["networkmanager" "wheel" "docker"];
-    packages = with extendedPkgs; [
+    packages = with pkgs; [
       webcord-vencord
       ripgrep
       flatpak-builder
@@ -38,13 +38,13 @@
       nil
       stylua
       alejandra
+      prettierd
       nodePackages_latest.pyright
       nodePackages_latest.vscode-css-languageserver-bin
       nodePackages_latest.typescript-language-server
       nodePackages_latest."@tailwindcss/language-server"
       nodePackages_latest.vscode-json-languageserver-bin
       nodePackages_latest.yaml-language-server
-      nodePackages."@fsouza/prettierd"
       nodePackages.mermaid-cli
     ];
   };
@@ -102,7 +102,7 @@
         PASSWORD_STORE_KEY = "CE4CECD4861112D38ED3393A767B8880F5AAEB9C";
       };
     };
-    programs.exa = {
+    programs.eza = {
       enable = true;
       enableAliases = true;
       git = true;
@@ -127,9 +127,9 @@
         desktop = null;
       };
     };
-    programs.emacs = {
-      enable = true;
-    };
+    #programs.emacs = {
+    #  enable = true;
+    #};
     programs.mpv = {
       enable = true;
       config = {
