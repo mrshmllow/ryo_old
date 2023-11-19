@@ -45,14 +45,14 @@
 
   services.printing.enable = true;
 
-  services.postgresql = {
-    enable = true;
-    ensureDatabases = [ "gist-share" ];
-    enableTCPIP = true;
-    authentication = pkgs.lib.mkOverride 10 ''
-      #type database  DBuser  auth-method
-      local all       all     trust
-      host    gist-share    postgres    ::1/128    trust
-    '';
-  };
+  # services.postgresql = {
+  #   enable = true;
+  #   ensureDatabases = [ "gist-share" ];
+  #   enableTCPIP = true;
+  #   authentication = pkgs.lib.mkOverride 10 ''
+  #     #type database  DBuser  auth-method
+  #     local all       all     trust
+  #     host    gist-share    postgres    ::1/128    trust
+  #   '';
+  # };
 }
