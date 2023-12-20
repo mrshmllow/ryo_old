@@ -39,8 +39,15 @@
             switch $cmd
               case 'test'
                   nixos-rebuild --use-remote-sudo test
+              case 'update'
+                  pushd ~/etc/nixos
+                  nix flake update
+                  pls build
+                  popd
               case 'build'
-                  sudo nixos-rebuild --use-remote-sudo switch
+                  pushd ~/etc/nixos
+                  sudo nixos-rebuild --use-remote-sudo switch --flake .
+                  popd
               case 'clean'
                   sudo nix-collect-garbage -d
                   nix store optimise
