@@ -13,9 +13,17 @@
     #emacs.url = "github:nix-community/emacs-overlay";
 
     wsl.url = "github:nix-community/NixOS-WSL";
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, flatpaks, ... }: {
+  outputs = inputs @ { self, nixpkgs, flatpaks, nix-minecraft, fenix, ... }: {
+    packages.x86_64-linux.default = fenix.packages.x86_64-linux.minimal.toolchain;
     nixosConfigurations = {
       "marsh-framework" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -27,6 +35,27 @@
           ./framework/framework.nix
           ./marsh/marsh.nix
           ./marsh/desktop.nix
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = [ fenix.overlays.default ];
+            environment.systemPackages = with pkgs; [
+              (fenix.packages.x86_64-linux.complete.withComponents [
+                "cargo"
+                "clippy"
+                "rust-src"
+                "rustc"
+                "rustfmt"
+              ])
+              rust-analyzer-nightly
+            ];
+          })
+        ];
+      };
+      "pi" = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = inputs;
+        modules = [
+          ./pi/configuration.nix
+          ./pi/hardware-configuration.nix
         ];
       };
       "marsh-wsl" = nixpkgs.lib.nixosSystem {

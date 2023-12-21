@@ -6,8 +6,7 @@
 
   users.users.marsh = {
     packages = with pkgs; [
-      jetbrains.pycharm-community
-      jetbrains.idea-community
+      # jetbrains.idea-ultimate
     ];
   };
 
@@ -46,9 +45,6 @@
     programs.chromium = {
       enable = true;
       package = pkgs.google-chrome;
-      extensions = [
-        {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";}
-      ];
       # commandLineArgs = [
       #   "--enable-features=UseOzonePlatform"
       #   "--ozone-platform=wayland"

@@ -20,7 +20,6 @@
       ripgrep
       flatpak-builder
       gcc
-      rustup
 
       neovide
       # texlive.combined.scheme-full.out
@@ -34,7 +33,7 @@
 
       # Neovim stuff
       lua-language-server
-      rust-analyzer
+      rust-analyzer-nightly
       nil
       stylua
       alejandra
