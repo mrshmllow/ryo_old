@@ -33,7 +33,6 @@
 
       # Neovim stuff
       lua-language-server
-      rust-analyzer-nightly
       nil
       stylua
       alejandra
