@@ -1,4 +1,4 @@
-wget https://github.com/nix-community/NixOS-WSL/releases/latest/download/nixos-wsl.tar.gz
+Invoke-WebRequest https://github.com/nix-community/NixOS-WSL/releases/latest/download/nixos-wsl.tar.gz -OutFile nixos-wsl.tar.gz
 
 wsl --import NixOS_Testing .\NixOS_Testing\ nixos-wsl.tar.gz --version 2
 
