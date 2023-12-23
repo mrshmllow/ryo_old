@@ -56,6 +56,7 @@
       ./programs/bat.nix
       ./programs/git.nix
       ./programs/gpg.nix
+      ./programs/ssh.nix
     ];
     home.stateVersion = "23.11";
     programs.kitty = {
