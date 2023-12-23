@@ -20,9 +20,14 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, flatpaks, nix-minecraft, fenix, ... }: {
+  outputs = inputs @ { self, nixpkgs, flatpaks, nix-minecraft, fenix, auto-cpufreq, ... }: {
     packages.x86_64-linux.default = fenix.packages.x86_64-linux.minimal.toolchain;
     nixosConfigurations = {
       "marsh-framework" = nixpkgs.lib.nixosSystem {
@@ -35,6 +40,7 @@
           ./framework/framework.nix
           ./marsh/marsh.nix
           ./marsh/desktop.nix
+          auto-cpufreq.nixosModules.default
           ({ pkgs, ... }: {
             nixpkgs.overlays = [ fenix.overlays.default ];
             environment.systemPackages = with pkgs; [

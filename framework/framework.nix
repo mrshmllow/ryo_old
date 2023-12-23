@@ -23,6 +23,8 @@
 
   powerManagement.powertop.enable = true;
 
+  programs.auto-cpufreq.enable = true;
+
   hardware.sensor.iio.enable = true;
 
   services.thermald.enable = true;
