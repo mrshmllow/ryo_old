@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   services.xserver.displayManager.autoLogin.user = "marsh";
 
   users.users.marsh = {

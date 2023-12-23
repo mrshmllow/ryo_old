@@ -27,7 +27,15 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, flatpaks, nix-minecraft, fenix, auto-cpufreq, ... }: {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    flatpaks,
+    nix-minecraft,
+    fenix,
+    auto-cpufreq,
+    ...
+  }: {
     packages.x86_64-linux.default = fenix.packages.x86_64-linux.minimal.toolchain;
     nixosConfigurations = {
       "marsh-framework" = nixpkgs.lib.nixosSystem {
@@ -41,8 +49,8 @@
           ./marsh/marsh.nix
           ./marsh/desktop.nix
           auto-cpufreq.nixosModules.default
-          ({ pkgs, ... }: {
-            nixpkgs.overlays = [ fenix.overlays.default ];
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [fenix.overlays.default];
             environment.systemPackages = with pkgs; [
               (fenix.packages.x86_64-linux.complete.withComponents [
                 "cargo"

@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  nixpkgs.config.allowUnfree = true; 
+{pkgs, ...}: {
+  nixpkgs.config.allowUnfree = true;
 
   nix.extraOptions = ''
     plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
@@ -75,7 +75,7 @@
     ];
     fontconfig = {
       defaultFonts = {
-        monospace = [ "JetBrainsMono" ];
+        monospace = ["JetBrainsMono"];
       };
     };
   };

@@ -1,4 +1,8 @@
-{ pkgs, wsl, ... }: {
+{
+  pkgs,
+  wsl,
+  ...
+}: {
   imports = [
     wsl.nixosModules.wsl
   ];
@@ -19,7 +23,6 @@
 
     # Enable integration with Docker Desktop (needs to be installed)
     # docker-desktop.enable = true;
-
   };
 
   networking.hostName = "marsh-wsl";
