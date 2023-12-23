@@ -14,8 +14,8 @@
     enable = true;
     settings = {
       # https://wiki.archlinux.org/title/Framework_Laptop_13#12th_gen_Turbo-Boost_on_battery_with_tlp
-      CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_performance";
+      # CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+      # CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_performance";
       # https://community.frame.work/t/guide-linux-battery-life-tuning/6665
       PCIE_ASPM_ON_BAT = "powersupersave";
     };
