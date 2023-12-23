@@ -5,6 +5,7 @@
 }: {
   home.shellAliases = {
     cat = "bat";
+    ssh = "kitty +kitten ssh";
     tree = "eza --tree";
     gen_pdf = "pandoc --pdf-engine=xelatex -V geometry:margin=1in -V 'mainfont:DejaVu Serif' -V 'sansfont:DejaVu Sans' -V 'monofont:FiraCode Nerd Font'";
     icat = "kitty +kitten icat";
