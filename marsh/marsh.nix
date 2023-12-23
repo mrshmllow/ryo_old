@@ -20,6 +20,8 @@
       flatpak-builder
       gcc
 
+      fake-package
+
       # texlive.combined.scheme-full.out
       pandoc
       yt-dlp
