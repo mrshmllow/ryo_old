@@ -30,5 +30,6 @@
   programs.gh = {
     enable = true;
     settings.git_protocol = "ssh";
+    settings.version = 1;
   };
 }
