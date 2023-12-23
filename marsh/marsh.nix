@@ -16,12 +16,10 @@
     description = "marsh";
     extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [
-      webcord-vencord
       ripgrep
       flatpak-builder
       gcc
 
-      neovide
       # texlive.combined.scheme-full.out
       pandoc
       yt-dlp
