@@ -45,6 +45,11 @@
                   nix flake update
                   pls build
                   popd
+              case 'pi'
+                  pushd ~/etc/nixos
+                  nix flake update
+                  nixos-rebuild switch --flake .#pi --target-host root@pi --build-host root@pi --verbose --fast
+                  popd
               case 'build'
                   pushd ~/etc/nixos
                   sudo nixos-rebuild --use-remote-sudo switch --flake .
