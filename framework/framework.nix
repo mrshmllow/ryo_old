@@ -21,7 +21,7 @@
     };
   };
 
-  # powerManagement.powertop.enable = true;
+  powerManagement.powertop.enable = true;
 
   services.system76-scheduler.enable = true;
 
