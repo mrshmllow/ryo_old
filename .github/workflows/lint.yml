@@ -1,0 +1,14 @@
+name: "Check Format"
+on:
+  pull_request:
+  push:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        # v8 only works? https://github.com/DeterminateSystems/nix-installer-action/issues/60
+      - uses: DeterminateSystems/nix-installer-action@v8
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: DeterminateSystems/flake-checker-action@main
+      - run: nix run github:kamadorueda/alejandra -- -c .
