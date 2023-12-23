@@ -80,7 +80,7 @@
     };
   };
 
-  services.emacs.enable = true;
+  # services.emacs.enable = true;
 
   programs.gnupg.agent = {
     enable = true;
