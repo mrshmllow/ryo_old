@@ -17,7 +17,8 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
     fenix = {
-      url = "github:nix-community/fenix";
+      url = "github:nix-community/fenix/monthly";
+
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
