@@ -1,9 +1,9 @@
-name: "Test Marsh-Framework"
+name: "Test Build"
 on:
   pull_request:
   push:
 jobs:
-  tests:
+  marsh-framework:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -12,3 +12,12 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
       - run: nix build .#nixosConfigurations.marsh-framework.config.system.build.toplevel
+  marsh-wsl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        # v8 only works? https://github.com/DeterminateSystems/nix-installer-action/issues/60
+      - uses: DeterminateSystems/nix-installer-action@v8
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: DeterminateSystems/flake-checker-action@main
+      - run: nix build .#nixosConfigurations.marsh-wsl.config.system.build.toplevel
