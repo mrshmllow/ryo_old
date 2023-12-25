@@ -1,6 +1,6 @@
 # ryo
 
-![image](https://github.com/mrshmllow/ryo/assets/40532058/7096c950-3f2c-40b8-b4a8-5a2440915d0f)
+![ryo nix](https://github.com/mrshmllow/ryo/assets/40532058/53f16ab2-2d42-451b-90f7-eaa7a1f82f5e)
 
 ## wsl init
 
