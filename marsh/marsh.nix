@@ -35,6 +35,7 @@
       stylua
       alejandra
       prettierd
+      taplo
       nodePackages_latest.pyright
       nodePackages_latest.vscode-css-languageserver-bin
       nodePackages_latest.typescript-language-server
