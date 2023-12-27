@@ -134,6 +134,7 @@
     "flathub:app/md.obsidian.Obsidian/x86_64/stable"
     "flathub:app/com.usebottles.bottles/x86_64/stable"
     "flathub:app/com.github.iwalton3.jellyfin-media-player/x86_64/stable"
+    "flathub:app/com.heroicgameslauncher.hgl/x86_64/stable"
     "flathub:runtime/org.gnome.Platform/x86_64/44"
   ];
 
