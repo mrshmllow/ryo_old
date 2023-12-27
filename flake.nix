@@ -35,6 +35,7 @@
     nix-minecraft,
     fenix,
     auto-cpufreq,
+    neovim-nightly-overlay,
     ...
   }: {
     packages.x86_64-linux.default = fenix.packages.x86_64-linux.minimal.toolchain;
@@ -51,7 +52,7 @@
           ./marsh/desktop.nix
           auto-cpufreq.nixosModules.default
           ({pkgs, ...}: {
-            nixpkgs.overlays = [fenix.overlays.default];
+            nixpkgs.overlays = [fenix.overlays.default neovim-nightly-overlay.overlay];
             environment.systemPackages = with pkgs; [
               (fenix.packages.x86_64-linux.complete.withComponents [
                 "cargo"
