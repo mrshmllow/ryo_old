@@ -81,6 +81,20 @@
           ./common.nix
           ./wsl/wsl.nix
           ./marsh/marsh.nix
+          # TODO: De-dup
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [fenix.overlays.default neovim-nightly-overlay.overlay];
+            environment.systemPackages = with pkgs; [
+              (fenix.packages.x86_64-linux.complete.withComponents [
+                "cargo"
+                "clippy"
+                "rust-src"
+                "rustc"
+                "rustfmt"
+              ])
+              rust-analyzer-nightly
+            ];
+          })
         ];
       };
     };
