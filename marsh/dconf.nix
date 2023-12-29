@@ -14,10 +14,6 @@
       show-battery-percentage = true;
     };
 
-    "org/gnome/shell/weather" = {
-      locations = "[<(uint32 2, <('Sydney', 'YSSY', true, [(-0.59253928105207498, 2.6386469349889961)], [(-0.59137572239964786, 2.6392287230418559)])>)>]";
-    };
-
     # "org/gnome/desktop/background" = {
     #   color-shading-type = "solid";
     #   picture-options = "zoom";
@@ -41,7 +37,7 @@
     };
 
     "org/gnome/shell" = {
-      enabled-extensions = ["appindicatorsupport@rgcjonas.gmail.com" "quick-settings-tweaks@qwreey" "blur-my-shell@aunetx" "rounded-window-corners@yilozt"];
+      enabled-extensions = ["appindicatorsupport@rgcjonas.gmail.com" "quick-settings-tweaks@qwreey" "blur-my-shell@aunetx"];
     };
 
     "org/gtk/gtk4/settings/file-chooser" = {
