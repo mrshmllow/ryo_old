@@ -66,6 +66,33 @@
           })
         ];
       };
+      "maple" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = inputs;
+        modules = [
+          flatpaks.nixosModules.default
+	  ./maple/configuration.nix
+	  ./maple/hardware-configuration.nix
+	  ./maple/winapps.nix
+          ./common.nix
+	  ./desktop.nix
+          ./marsh/marsh.nix
+          ./marsh/desktop.nix
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [fenix.overlays.default neovim-nightly-overlay.overlay];
+            environment.systemPackages = with pkgs; [
+              (fenix.packages.x86_64-linux.complete.withComponents [
+                "cargo"
+                "clippy"
+                "rust-src"
+                "rustc"
+                "rustfmt"
+              ])
+              rust-analyzer-nightly
+            ];
+          })
+        ];
+      };
       "pi" = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = inputs;

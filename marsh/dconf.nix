@@ -59,5 +59,10 @@
       media-control-enabled = false;
       notifications-enabled = false;
     };
+
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
   };
 }
