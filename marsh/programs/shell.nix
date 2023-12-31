@@ -41,17 +41,17 @@
               case 'test'
                   nixos-rebuild --use-remote-sudo test
               case 'update'
-                  pushd ~/etc/nixos
+                  pushd ~/ryo
                   nix flake update
                   pls build
                   popd
               case 'pi'
-                  pushd ~/etc/nixos
+                  pushd ~/ryo
                   nix flake update
                   nixos-rebuild switch --flake .#pi --target-host root@pi --build-host root@pi --verbose --fast
                   popd
               case 'build'
-                  pushd ~/etc/nixos
+                  pushd ~/ryo
                   sudo nixos-rebuild --use-remote-sudo switch --flake .
                   popd
               case 'clean'
