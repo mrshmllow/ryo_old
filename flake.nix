@@ -71,11 +71,11 @@
         specialArgs = inputs;
         modules = [
           flatpaks.nixosModules.default
-	  ./maple/configuration.nix
-	  ./maple/hardware-configuration.nix
-	  ./maple/winapps.nix
+          ./maple/configuration.nix
+          ./maple/hardware-configuration.nix
+          ./maple/winapps.nix
           ./common.nix
-	  ./desktop.nix
+          ./desktop.nix
           ./marsh/marsh.nix
           ./marsh/desktop.nix
           ({pkgs, ...}: {
