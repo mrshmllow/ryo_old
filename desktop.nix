@@ -9,6 +9,8 @@
     pinentryFlavor = "gnome3";
   };
 
+  programs.gamemode.enable = true;
+
   environment.systemPackages = with pkgs; [
     wl-clipboard
 
