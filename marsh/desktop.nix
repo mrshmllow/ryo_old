@@ -3,7 +3,7 @@
 
   users.users.marsh = {
     packages = with pkgs; [
-      # jetbrains.idea-ultimate
+      jetbrains.idea-ultimate
       webcord-vencord
       neovide
     ];
