@@ -13,9 +13,10 @@
   ];
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = ["amdgpu"];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_5;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/100d1a3e-4f34-48c6-b25b-a93f64efdcc3";
@@ -43,4 +44,6 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware.opengl.driSupport32Bit = true;
 }
