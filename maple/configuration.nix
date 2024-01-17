@@ -32,5 +32,17 @@
 
   hardware.opengl.driSupport32Bit = true;
 
+  # Star citizen stuff
+  boot.kernel.sysctl."vm.max_map_count" = 16777216;
+
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      item = "nofile";
+      type = "-";
+      value = "524288";
+    }
+  ];
+
   system.stateVersion = "23.11";
 }
