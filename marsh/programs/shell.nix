@@ -50,7 +50,7 @@
                   nix flake update
                   nixos-rebuild switch --flake .#pi --target-host root@pi --build-host root@pi --verbose --fast
                   popd
-              case 'build'
+              case 'switch'
                   pushd ~/ryo
                   sudo nixos-rebuild --use-remote-sudo switch --flake .
                   popd
