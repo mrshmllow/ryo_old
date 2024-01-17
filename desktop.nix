@@ -13,6 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     wl-clipboard
+    bottles
 
     # GNOME Extensions & Applications
     pinentry.gnome3
@@ -60,7 +61,6 @@
     "flathub:app/im.riot.Riot/x86_64/stable"
     "flathub:app/rest.insomnia.Insomnia/x86_64/stable"
     "flathub:app/md.obsidian.Obsidian/x86_64/stable"
-    "flathub:app/com.usebottles.bottles/x86_64/stable"
     "flathub:app/com.github.iwalton3.jellyfin-media-player/x86_64/stable"
     "flathub:app/com.heroicgameslauncher.hgl/x86_64/stable"
     "flathub:runtime/org.gnome.Platform/x86_64/44"
