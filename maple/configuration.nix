@@ -32,6 +32,9 @@
 
   hardware.opengl.driSupport32Bit = true;
 
+  hardware.openrazer.enable = true;
+  hardware.openrazer.users = ["marsh"];
+
   # Star citizen stuff
   boot.kernel.sysctl."vm.max_map_count" = 16777216;
 
