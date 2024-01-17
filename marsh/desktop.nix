@@ -4,6 +4,7 @@
   users.users.marsh = {
     packages = with pkgs; [
       jetbrains.idea-ultimate
+      jetbrains.rust-rover
       neovide
     ];
   };
