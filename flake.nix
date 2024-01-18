@@ -16,6 +16,8 @@
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
     fenix = {
       url = "github:nix-community/fenix/monthly";
 
@@ -35,6 +37,7 @@
     nix-minecraft,
     fenix,
     auto-cpufreq,
+    nix-gaming,
     neovim-nightly-overlay,
     ...
   }: {

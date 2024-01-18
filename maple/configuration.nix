@@ -1,6 +1,8 @@
 {
   config,
   pkgs,
+  nix-gaming,
+  home-manager,
   ...
 }: {
   boot.loader.systemd-boot.enable = true;
@@ -36,16 +38,38 @@
   hardware.openrazer.users = ["marsh"];
 
   # Star citizen stuff
-  boot.kernel.sysctl."vm.max_map_count" = 16777216;
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 16777216;
+    "fs.file-max" = 524288;
+  };
 
-  security.pam.loginLimits = [
-    {
-      domain = "*";
-      item = "nofile";
-      type = "-";
-      value = "524288";
-    }
+  environment.systemPackages = [
+    nix-gaming.packages.${pkgs.system}.star-citizen
   ];
+
+  home-manager.users.marsh = {
+    pkgs,
+    config,
+    ...
+  }: {
+    systemd.user.services = {
+      "drive" = {
+        Unit = {
+          Description = "google drive";
+        };
+        Service = {
+          Type = "simple";
+          ExecStart = ''${pkgs.rclone}/bin/rclone mount --vfs-cache-mode=full drive: /home/marsh/Drive'';
+          Wants = "network-online.target";
+          After = "network-online.target";
+          Enabled = true;
+        };
+        Install = {
+          WantedBy = ["default.target"];
+        };
+      };
+    };
+  };
 
   system.stateVersion = "23.11";
 }
