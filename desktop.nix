@@ -14,6 +14,8 @@
   environment.systemPackages = with pkgs; [
     wl-clipboard
     bottles
+    pureref
+    krita
 
     # GNOME Extensions & Applications
     pinentry.gnome3
