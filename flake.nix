@@ -50,7 +50,7 @@
           flatpaks.nixosModules.default
           ./common.nix
           ./desktop.nix
-          ./framework/framework.nix
+          ./hosts/framework/framework.nix
           ./marsh/marsh.nix
           ./marsh/desktop.nix
           auto-cpufreq.nixosModules.default
@@ -74,9 +74,7 @@
         specialArgs = inputs;
         modules = [
           flatpaks.nixosModules.default
-          ./maple/configuration.nix
-          ./maple/hardware-configuration.nix
-          ./maple/winapps.nix
+          ./hosts/maple/maple.nix
           ./common.nix
           ./desktop.nix
           ./marsh/marsh.nix
@@ -100,8 +98,8 @@
         system = "aarch64-linux";
         specialArgs = inputs;
         modules = [
-          ./pi/configuration.nix
-          ./pi/hardware-configuration.nix
+          ./hosts/pi/pi.nix
+          ./hosts/pi/hardware-configuration.nix
         ];
       };
       "marsh-wsl" = nixpkgs.lib.nixosSystem {
@@ -109,7 +107,7 @@
         specialArgs = inputs;
         modules = [
           ./common.nix
-          ./wsl/wsl.nix
+          ./hosts/wsl/wsl.nix
           ./marsh/marsh.nix
           # TODO: De-dup
           ({pkgs, ...}: {
