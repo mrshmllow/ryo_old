@@ -43,7 +43,7 @@
               case 'update'
                   pushd ~/ryo
                   nix flake update
-                  pls build
+                  pls switch
                   popd
               case 'pi'
                   pushd ~/ryo
