@@ -16,6 +16,7 @@
     bottles
     pureref
     krita
+    vesktop
 
     # GNOME Extensions & Applications
     pinentry.gnome3
@@ -56,7 +57,6 @@
   };
   services.flatpak.packages = [
     "flathub:app/org.gnome.Builder/x86_64/stable"
-    "flathub:app/xyz.armcord.ArmCord/x86_64/stable"
     "flathub:app/org.gimp.GIMP/x86_64/stable"
     "flathub:app/org.gnome.Boxes/x86_64/stable"
     "flathub:app/com.transmissionbt.Transmission/x86_64/stable"
