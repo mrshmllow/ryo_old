@@ -54,6 +54,7 @@
   services.flatpak.enable = true;
   services.flatpak.remotes = {
     "flathub" = "https://flathub.org/repo/flathub.flatpakrepo";
+    "launchermoe" = "https://gol.launcher.moe/gol.launcher.moe.flatpakrepo";
   };
   services.flatpak.packages = [
     "flathub:app/org.gnome.Builder/x86_64/stable"
@@ -66,6 +67,8 @@
     "flathub:app/com.github.iwalton3.jellyfin-media-player/x86_64/stable"
     "flathub:app/com.heroicgameslauncher.hgl/x86_64/stable"
     "flathub:runtime/org.gnome.Platform/x86_64/44"
+
+    "launchermoe:app/moe.launcher.the-honkers-railway-launcher/x86_64/stable"
   ];
 
   # services.postgresql = {
