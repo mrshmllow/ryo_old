@@ -60,7 +60,7 @@
                   sudo nix-collect-garbage -d
                   nix store optimise
               case '*'
-                  nix-shell -p $cmd
+                  nix run nixpkgs#$cmd --
             end
           else
             echo "Error: No command or package provided"
