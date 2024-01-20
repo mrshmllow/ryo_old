@@ -78,8 +78,12 @@
 
   fonts = {
     enableDefaultPackages = true;
+    fontDir.enable = true;
     packages = with pkgs; [
       source-han-sans
+      noto-fonts
+      noto-fonts-emoji
+      fira-code-symbols
       (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
     ];
     fontconfig = {
