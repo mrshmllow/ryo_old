@@ -140,5 +140,11 @@
         profile = "gpu-hq";
       };
     };
+
+    home.file.".config/neovide/config.toml".text = ''
+      vsync = false
+      maximized = true
+      frame = "none"
+    '';
   };
 }
