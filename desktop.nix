@@ -16,6 +16,7 @@
     bottles
     pureref
     krita
+    clapper
     vesktop
 
     # GNOME Extensions & Applications
@@ -67,6 +68,7 @@
     "flathub:app/com.github.iwalton3.jellyfin-media-player/x86_64/stable"
     "flathub:app/com.heroicgameslauncher.hgl/x86_64/stable"
     "flathub:runtime/org.gnome.Platform/x86_64/44"
+    "flathub:app/io.github.jeffshee.Hidamari/x86_64/stable"
 
     "launchermoe:app/moe.launcher.the-honkers-railway-launcher/x86_64/stable"
   ];
