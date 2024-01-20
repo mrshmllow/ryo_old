@@ -19,7 +19,9 @@
       set fish_greeting
 
       function fish_greeting
-        ${pkgs.krabby}/bin/krabby name marshadow --no-title
+        if [ -z "$NVIM" ];
+          ${pkgs.krabby}/bin/krabby name marshadow --no-title
+        end
       end
 
       fish_vi_key_bindings
