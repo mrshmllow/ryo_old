@@ -20,6 +20,10 @@
       flatpak-builder
       gcc
 
+      # fzf.fish requirements
+      fzf
+      fd
+
       # texlive.combined.scheme-full.out
       pandoc
       yt-dlp
