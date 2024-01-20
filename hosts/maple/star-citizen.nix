@@ -1,5 +1,6 @@
 {
   nix-gaming,
+  lib,
   pkgs,
   ...
 }: {
@@ -11,4 +12,8 @@
   environment.systemPackages = [
     nix-gaming.packages.${pkgs.system}.star-citizen
   ];
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+
+  zramSwap.enable = true;
 }
