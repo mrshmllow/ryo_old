@@ -19,5 +19,9 @@
   hardware.openrazer.enable = true;
   hardware.openrazer.users = ["marsh"];
 
+  services.udev.extraRules = ''
+    SUBSYSTEM=="input", ATTRS{idVendor}=="ffff", ATTRS{idProduct}=="0035", SYMLINK+="card_reader"
+  '';
+
   system.stateVersion = "23.11";
 }
