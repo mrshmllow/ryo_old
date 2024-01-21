@@ -70,7 +70,7 @@
     "flathub:runtime/org.gnome.Platform/x86_64/44"
     "flathub:app/io.github.jeffshee.Hidamari/x86_64/stable"
 
-    "launchermoe:app/moe.launcher.the-honkers-railway-launcher/x86_64/stable"
+    "launchermoe:app/moe.launcher.anime-games-launcher/x86_64/stable"
   ];
 
   # services.postgresql = {
