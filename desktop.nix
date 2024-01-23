@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  nix-gaming,
+  ...
+}: {
+  imports = [
+    nix-gaming.nixosModules.pipewireLowLatency
+  ];
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -48,6 +55,13 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+
+    lowLatency = {
+      enable = true;
+      # defaults (no need to be set unless modified)
+      quantum = 64;
+      rate = 48000;
+    };
   };
 
   services.printing.enable = true;
