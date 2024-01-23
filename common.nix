@@ -108,6 +108,8 @@
     package = pkgs.neovim-nightly;
   };
 
+  programs.direnv.enable = true;
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 }
