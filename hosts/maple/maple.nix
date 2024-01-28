@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  nix-gaming,
+  ...
+}: {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -10,11 +14,14 @@
     ./star-citizen.nix
     ./blender.nix
     ./virt.nix
+    ./host-rkvm.nix
   ];
 
   users.users.marsh.packages = with pkgs; [
     osu-lazer-bin
   ];
+
+  programs.extra-container.enable = true;
 
   hardware.openrazer.enable = true;
   hardware.openrazer.users = ["marsh"];
@@ -22,6 +29,8 @@
   services.udev.extraRules = ''
     SUBSYSTEM=="input", ATTRS{idVendor}=="ffff", ATTRS{idProduct}=="0035", SYMLINK+="card_reader"
   '';
+
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   system.stateVersion = "23.11";
 }

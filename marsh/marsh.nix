@@ -20,6 +20,8 @@
       flatpak-builder
       gcc
 
+      comma
+
       # fzf.fish requirements
       fzf
       fd
@@ -40,6 +42,7 @@
       alejandra
       prettierd
       taplo
+      jdt-language-server
       nodePackages_latest.pyright
       nodePackages_latest.vscode-css-languageserver-bin
       nodePackages_latest.typescript-language-server

@@ -24,7 +24,7 @@
     pureref
     krita
     clapper
-    vesktop
+    vieb
 
     # GNOME Extensions & Applications
     pinentry.gnome3
@@ -32,10 +32,8 @@
     gnome.gnome-tweaks
     gnomeExtensions.blur-my-shell
     gnomeExtensions.quick-settings-tweaker
-    gnomeExtensions.rounded-window-corners
     gnomeExtensions.caffeine
     gnomeExtensions.appindicator
-    gnomeExtensions.caffeine
   ];
 
   # Enable the GNOME Desktop Environment.
@@ -83,6 +81,8 @@
     "flathub:app/com.heroicgameslauncher.hgl/x86_64/stable"
     "flathub:runtime/org.gnome.Platform/x86_64/44"
     "flathub:app/io.github.jeffshee.Hidamari/x86_64/stable"
+    "flathub:app/com.spotify.Client/x86_64/stable"
+    "flathub:app/dev.vencord.Vesktop/x86_64/stable"
 
     "launchermoe:app/moe.launcher.anime-games-launcher/x86_64/stable"
   ];

@@ -28,6 +28,8 @@
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = inputs @ {
@@ -39,6 +41,7 @@
     auto-cpufreq,
     nix-gaming,
     neovim-nightly-overlay,
+    sops-nix,
     ...
   }: {
     packages.x86_64-linux.default = fenix.packages.x86_64-linux.minimal.toolchain;
@@ -49,6 +52,7 @@
         modules = [
           flatpaks.nixosModules.default
           ./common.nix
+          ./sops.nix
           ./desktop.nix
           ./hosts/framework/framework.nix
           ./marsh/marsh.nix
@@ -74,9 +78,11 @@
         specialArgs = inputs;
         modules = [
           flatpaks.nixosModules.default
+          sops-nix.nixosModules.sops
           ./hosts/maple/maple.nix
           ./common.nix
           ./desktop.nix
+          ./sops.nix
           ./marsh/marsh.nix
           ./marsh/desktop.nix
           ({pkgs, ...}: {

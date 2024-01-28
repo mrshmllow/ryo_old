@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
+    ./rkvm-client.nix
   ];
 
   services.fprintd.enable = true;

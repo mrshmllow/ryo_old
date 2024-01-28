@@ -1,0 +1,8 @@
+keys:
+  - &marsh age1fucsqqjuyeqwmngt2aghqa3dvhqqagt8pn208amwp9l2q9hc8p0qmadfpx
+creation_rules:
+  - path_regex: secrets/.+$
+    key_groups:
+    - pgp:
+      - *marsh
+

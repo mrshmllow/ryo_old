@@ -41,7 +41,9 @@
 
             switch $cmd
               case 'test'
-                  nixos-rebuild --use-remote-sudo test
+                  pushd ~/ryo
+                  nixos-rebuild --use-remote-sudo test --flake
+                  popd
               case 'update'
                   pushd ~/ryo
                   nix flake update
