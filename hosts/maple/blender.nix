@@ -33,7 +33,7 @@
         };
         Service = {
           Type = "simple";
-          ExecStart = ''${pkgs.rclone}/bin/rclone mount --vfs-cache-mode=full drive: /home/marsh/Drive'';
+          ExecStart = ''${pkgs.rclone}/bin/rclone mount --vfs-cache-mode=full drive_personal: /home/marsh/Drive --drive-shared-with-me'';
           Wants = "network-online.target";
           After = "network-online.target";
           Enabled = true;
