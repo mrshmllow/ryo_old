@@ -67,6 +67,12 @@
       ./programs/ssh.nix
     ];
     home.stateVersion = "23.11";
+    home.file.".face" = {
+      source = builtins.fetchurl {
+        url = "https://avatars.githubusercontent.com/u/40532058";
+        sha256 = "06vm51wmckw5d4ni3rxnc8xbq8fxfr42s70cda4g2w9wsn97zsj7";
+      };
+    };
     programs.kitty = {
       enable = true;
       theme = "Catppuccin-Mocha";
