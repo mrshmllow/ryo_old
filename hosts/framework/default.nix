@@ -1,7 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  auto-cpufreq,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./rkvm-client.nix
+    auto-cpufreq.nixosModules.default
   ];
 
   services.fprintd.enable = true;

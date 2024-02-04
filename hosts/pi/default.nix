@@ -3,7 +3,10 @@
   nix-minecraft,
   ...
 }: {
-  imports = [nix-minecraft.nixosModules.minecraft-servers];
+  imports = [
+    nix-minecraft.nixosModules.minecraft-servers
+    ./hardware-configuration.nix
+  ];
   nixpkgs.overlays = [nix-minecraft.overlay];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)

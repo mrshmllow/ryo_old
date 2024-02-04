@@ -1,4 +1,8 @@
-{...}: {
+{sops-nix, ...}: {
+  imports = [
+    sops-nix.nixosModules.sops
+  ];
+
   sops = {
     age.keyFile = "/home/marsh/.config/sops/age/keys.txt";
     defaultSopsFile = ./.sops.yaml;

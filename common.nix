@@ -1,36 +1,11 @@
 {pkgs, ...}: {
-  nixpkgs.config.allowUnfree = true;
-
-  nix.extraOptions = ''
-    plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
-  '';
-
-  nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
-    auto-optimise-store = true;
-    substituters = [
-      "https://nix-community.cachix.org"
-      "https://cache.nixos.org/"
-      "https://nix-gaming.cachix.org"
-    ];
-    trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-    ];
-  };
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
+  imports = [
+    ./nix.nix
+    ./sops.nix
+  ];
 
   networking.wireless.userControlled.enable = true;
   # networking.wireless.enable = true;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -55,16 +30,6 @@
     LC_TIME = "en_AU.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    layout = "au";
-    xkbVariant = "";
-
-    excludePackages = [pkgs.xterm];
-    desktopManager.xterm.enable = false;
-  };
-
   services.fwupd.enable = true;
 
   virtualisation.docker.rootless = {
@@ -75,25 +40,6 @@
   environment.shells = with pkgs; [fish];
   programs.fish.enable = true;
   environment.pathsToLink = ["/share/bash-completion"];
-
-  fonts = {
-    enableDefaultPackages = true;
-    fontDir.enable = true;
-    packages = with pkgs; [
-      source-han-sans
-      noto-fonts
-      noto-fonts-emoji
-      fira-code-symbols
-      (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
-    ];
-    fontconfig = {
-      defaultFonts = {
-        monospace = ["JetBrainsMono"];
-      };
-    };
-  };
-
-  # services.emacs.enable = true;
 
   programs.gnupg.agent = {
     enable = true;
