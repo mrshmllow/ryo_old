@@ -23,6 +23,11 @@
     fsType = "ext4";
   };
 
+  fileSystems."/mnt/hdd" = {
+    device = "/dev/sda1";
+    fsType = "ext4";
+  };
+
   boot.initrd.luks.devices."luks-a97dfd88-bcf9-406d-a8c3-bd2ac63c1496".device = "/dev/disk/by-uuid/a97dfd88-bcf9-406d-a8c3-bd2ac63c1496";
 
   fileSystems."/boot" = {
