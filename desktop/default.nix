@@ -45,7 +45,10 @@
     fontDir.enable = true;
     packages = with pkgs; [
       source-han-sans
+      source-han-sans-japanese
+      source-han-serif-japanese
       noto-fonts
+      noto-fonts-cjk
       noto-fonts-emoji
       fira-code-symbols
       (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
@@ -53,6 +56,8 @@
     fontconfig = {
       defaultFonts = {
         monospace = ["JetBrainsMono"];
+        serif = ["Noto Serif" "Source Han Serif"];
+        sansSerif = ["Noto Sans" "Source Han Sans"];
       };
     };
   };
