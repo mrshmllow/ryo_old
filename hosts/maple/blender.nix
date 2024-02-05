@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   users.users.marsh.packages = with pkgs; [
     blender-hip
   ];
@@ -27,7 +31,7 @@
         };
         Service = {
           Type = "simple";
-          ExecStart = ''${pkgs.rclone}/bin/rclone mount --vfs-cache-mode=full drive_personal: /home/marsh/Drive --drive-shared-with-me'';
+          ExecStart = ''${lib.getExe pkgs.rclone} mount --vfs-cache-mode=full drive_personal: /home/marsh/Drive --drive-shared-with-me'';
           Wants = "network-online.target";
           After = "network-online.target";
           Enabled = true;

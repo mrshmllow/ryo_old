@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
     destination = "/bin/dbus-sway-environment";
@@ -89,8 +93,8 @@ in {
       };
     };
     services.swayidle = let
-      pause = "${pkgs.playerctl}/bin/playerctl pause";
-      lock = "${pkgs.swaylock}/bin/swaylock -fF";
+      pause = "${lib.getExe pkgs.playerctl} pause";
+      lock = "${lib.getExe pkgs.swaylock} -fF";
     in {
       enable = true;
       events = [

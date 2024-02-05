@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   home.shellAliases = {
@@ -20,18 +21,18 @@
 
       function fish_greeting
         if [ -z "$NVIM" ];
-          ${pkgs.krabby}/bin/krabby name marshadow --no-title
+          ${lib.getExe' pkgs.krabby "krabby"} name marshadow --no-title
         end
       end
 
       fish_vi_key_bindings
     '';
     shellInit = ''
-      ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
+      ${lib.getExe pkgs.any-nix-shell} fish --info-right | source
 
       set fish_cursor_insert line
 
-      set -x MANPAGER "${pkgs.neovim}/bin/nvim -c 'Man!' -o -"
+      set -x MANPAGER "${lib.getExe pkgs.neovim} -c 'Man!' -o -"
     '';
     functions = {
       pls = {
@@ -73,7 +74,7 @@
       catch_em_all = {
         body = ''
           while true
-            ${pkgs.krabby}/bin/krabby random
+            ${lib.getExe' pkgs.krabby "krabby"} random
             sleep 1
           end
         '';
