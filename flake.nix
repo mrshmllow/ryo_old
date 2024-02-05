@@ -21,22 +21,11 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    flatpaks,
-    nix-minecraft,
-    fenix,
-    auto-cpufreq,
-    nix-gaming,
-    neovim-nightly-overlay,
-    sops-nix,
-    ...
-  }: let
+  outputs = inputs @ {nixpkgs, ...}: let
     rust = {pkgs, ...}: {
-      nixpkgs.overlays = [fenix.overlays.default neovim-nightly-overlay.overlay];
+      nixpkgs.overlays = [inputs.fenix.overlays.default inputs.neovim-nightly-overlay.overlay];
       environment.systemPackages = with pkgs; [
-        (fenix.packages.x86_64-linux.complete.withComponents [
+        (inputs.fenix.packages.x86_64-linux.complete.withComponents [
           "cargo"
           "clippy"
           "rust-src"
@@ -47,7 +36,7 @@
       ];
     };
   in {
-    packages.x86_64-linux.default = fenix.packages.x86_64-linux.minimal.toolchain;
+    packages.x86_64-linux.default = inputs.fenix.packages.x86_64-linux.minimal.toolchain;
     nixosConfigurations = {
       "marsh-framework" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
