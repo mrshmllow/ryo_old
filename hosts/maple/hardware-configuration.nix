@@ -24,7 +24,7 @@
   };
 
   fileSystems."/mnt/hdd" = {
-    device = "/dev/sda1";
+    device = "/dev/disk/by-uuid/b8c403dc-e5ff-46c6-a358-4178cf4a94ba";
     fsType = "ext4";
   };
 
