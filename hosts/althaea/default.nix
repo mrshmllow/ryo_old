@@ -84,7 +84,7 @@
 
   services.thermald.enable = true;
 
-  networking.hostName = "marsh-framework";
+  networking.hostName = "althaea";
 
   networking.networkmanager.wifi.backend = "iwd";
 

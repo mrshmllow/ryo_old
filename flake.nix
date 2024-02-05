@@ -38,12 +38,12 @@
   in {
     packages.x86_64-linux.default = inputs.fenix.packages.x86_64-linux.minimal.toolchain;
     nixosConfigurations = {
-      "marsh-framework" = nixpkgs.lib.nixosSystem {
+      "althaea" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
           ./common.nix
-          ./hosts/framework
+          ./hosts/althaea
           ./marsh
 
           ./desktop
