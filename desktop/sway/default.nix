@@ -35,6 +35,7 @@
     # all .8 opacity
     surface1 = "#45475acc";
     base = "#1e1e2ecc";
+    mauve = "#cba6f7cc";
   };
 in {
   imports = [../.wayland-wm];
@@ -107,6 +108,7 @@ in {
         output = {
           DP-2 = {
             mode = "1920x1080@144.001Hz";
+            bg = "${../wallpaper} fill";
           };
         };
         startup = [
@@ -118,7 +120,7 @@ in {
           titlebar = false;
         };
         keybindings = lib.mkOptionDefault {
-          "Mod4+Shift+s" = ''IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" $IMG && wl-copy < $IMG'';
+          "Mod4+Shift+s" = ''exec IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" $IMG && wl-copy < $IMG'';
         };
         bars = [
           {
@@ -133,11 +135,15 @@ in {
                 text = colors.text;
               };
               focusedWorkspace = {
-                background = colors.base;
-                border = colors.surface1;
-                text = colors.text;
+                background = colors.mauve;
+                border = colors.mauve;
+                text = colors.base;
               };
             };
+            statusCommand = lib.getExe pkgs.i3blocks;
+            extraConfig = ''
+              gaps 5
+            '';
           }
         ];
       };
@@ -147,6 +153,7 @@ in {
         default_dim_inactive 0.1
 
         layer_effects "panel" blur enable; shadows enable; corner_radius 6
+        layer_effects "kickoff" blur enable; shadows enable; corner_radius 6
       '';
     };
   };
