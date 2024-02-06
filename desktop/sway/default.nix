@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
     destination = "/bin/dbus-sway-environment";
@@ -24,6 +28,13 @@
       gnome_schema=org.gnome.desktop.interface
     '';
     # gsettings set $gnome_schema gtk-theme 'Dracula'
+  };
+
+  colors = {
+    text = "#cdd6f4";
+    # all .8 opacity
+    surface1 = "#45475acc";
+    base = "#1e1e2ecc";
   };
 in {
   imports = [../.wayland-wm];
@@ -57,4 +68,88 @@ in {
       value = 1;
     }
   ];
+
+  home-manager.users.marsh = {...}: {
+    wayland.windowManager.sway = {
+      enable = true;
+      package = null;
+      config = {
+        assigns = {
+          "1" = [
+            {
+              class = "^Google-chrome$";
+            }
+          ];
+          "3" = [
+            {
+              class = "^vesktop$";
+            }
+          ];
+          "5" = [
+            {
+              class = "^steam$";
+            }
+          ];
+        };
+        gaps = {
+          outer = 2;
+          inner = 4;
+        };
+        input = {
+          "5426:125:Razer_Razer_DeathAdder_V2_Pro" = {
+            accel_profile = "flat";
+            pointer_accel = ".5";
+          };
+          "2362:628:PIXA3854:00_093A:0274_Touchpad" = {
+            natural_scroll = "disabled";
+          };
+        };
+        menu = "kickoff";
+        modifier = "Mod4";
+        output = {
+          DP-2 = {
+            mode = "1920x1080@144.001Hz";
+          };
+        };
+        startup = [
+          {command = "${dbus-sway-environment}";}
+          {command = "${configure-gtk}";}
+        ];
+        terminal = "kitty";
+        window = {
+          titlebar = false;
+        };
+        keybindings = lib.mkOptionDefault {
+          "Mod4+Shift+s" = ''IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" $IMG && wl-copy < $IMG'';
+        };
+        bars = [
+          {
+            position = "top";
+            # height = 30;
+            colors = {
+              statusline = "#ffffff";
+              background = colors.base;
+              inactiveWorkspace = {
+                background = colors.base;
+                border = colors.base;
+                text = colors.text;
+              };
+              focusedWorkspace = {
+                background = colors.base;
+                border = colors.surface1;
+                text = colors.text;
+              };
+            };
+          }
+        ];
+      };
+      extraConfig = ''
+        blur enable
+        corner_radius 10
+        default_dim_inactive 0.1
+
+        layer_effects "panel" blur enable; shadows enable; corner_radius 6
+      '';
+    };
+  };
 }
