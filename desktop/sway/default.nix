@@ -103,7 +103,7 @@ in {
             natural_scroll = "disabled";
           };
         };
-        menu = "kickoff";
+        menu = "${lib.getExe pkgs.rofi} -show drun";
         modifier = "Mod4";
         output = {
           DP-2 = {
@@ -153,7 +153,6 @@ in {
         default_dim_inactive 0.1
 
         layer_effects "panel" blur enable; shadows enable; corner_radius 6
-        layer_effects "kickoff" blur enable; shadows enable; corner_radius 6
       '';
     };
   };

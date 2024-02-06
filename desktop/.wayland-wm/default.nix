@@ -9,15 +9,13 @@
     glib # gsettings
     gnome3.adwaita-icon-theme
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    kickoff
     mako # notification system developed by swaywm maintainer
     pamixer
     pavucontrol
     playerctl
   ];
 
-  home-manager.users.marsh = {...}: {
-    home.file.".config/kickoff/config.toml".source = ./kickoff.config.toml;
+  home-manager.users.marsh = {config, ...}: {
     programs.swaylock = {
       enable = true;
       settings = {
@@ -61,6 +59,25 @@
           command = "${pkgs.systemd}/bin/systemctl suspend";
         }
       ];
+    };
+    programs.rofi = {
+      enable = true;
+      theme = ./rofi.catppuccin-mocha.rasi;
+      extraConfig = {
+        modi = "run,drun,window";
+        # icon-theme = "Oranchelo";
+        show-icons = true;
+        terminal = "kitty";
+        drun-display-format = "{icon} {name}";
+        location = 0;
+        disable-history = false;
+        hide-scrollbar = true;
+        display-drun = "   Apps ";
+        display-run = "   Run ";
+        display-window = " 﩯  Window";
+        display-Network = " 󰤨  Network";
+        sidebar-mode = true;
+      };
     };
   };
 }
