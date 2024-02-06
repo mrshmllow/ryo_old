@@ -90,6 +90,13 @@ in {
             }
           ];
         };
+        floating = {
+          criteria = [
+            {
+              class = "Rofi";
+            }
+          ];
+        };
         gaps = {
           outer = 2;
           inner = 4;
@@ -103,7 +110,7 @@ in {
             natural_scroll = "disabled";
           };
         };
-        menu = "${lib.getExe pkgs.rofi} -show drun";
+        menu = "${lib.getExe pkgs.rofi} -normal-window -show drun";
         modifier = "Mod4";
         output = {
           DP-2 = {
