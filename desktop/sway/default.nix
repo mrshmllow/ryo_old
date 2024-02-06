@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
     destination = "/bin/dbus-sway-environment";
@@ -30,25 +26,14 @@
     # gsettings set $gnome_schema gtk-theme 'Dracula'
   };
 in {
+  imports = [../.wayland-wm];
+
   environment.systemPackages = with pkgs; [
     dbus # make dbus-update-activation-environment available in the path
     dbus-sway-environment
     configure-gtk
-    wayland
-    xdg-utils # for opening default programs when clicking links
-    glib # gsettings
     gnome3.adwaita-icon-theme
-    swaylock
-    swayidle
-    grim # screenshot functionality
-    slurp # screenshot functionality
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    kickoff
-    mako # notification system developed by swaywm maintainer
     i3blocks
-    pamixer
-    pavucontrol
-    playerctl
   ];
 
   programs.sway = {
@@ -72,51 +57,4 @@ in {
       value = 1;
     }
   ];
-
-  home-manager.users.marsh = {...}: {
-    programs.swaylock = {
-      enable = true;
-      settings = {
-        color = "1e1e2e";
-        bs-hl-color = "f38ba8";
-        inside-color = "313244";
-        ring-color = "313244";
-        inside-clear-color = "b4befe";
-        ring-clear-color = "b4befe";
-        inside-ver-color = "89b4fa";
-        ring-ver-color = "89b4fa";
-        inside-wrong-color = "f38ba8";
-        ring-wrong-color = "f38ba8";
-        key-hl-color = "cba6f7";
-        line-color = "1e1e2e";
-        text-caps-lock-color = "fab387";
-      };
-    };
-    services.swayidle = let
-      pause = "${lib.getExe pkgs.playerctl} pause";
-      lock = "${lib.getExe pkgs.swaylock} -fF";
-    in {
-      enable = true;
-      events = [
-        {
-          event = "before-sleep";
-          command = pause;
-        }
-        {
-          event = "before-sleep";
-          command = lock;
-        }
-      ];
-      timeouts = [
-        {
-          timeout = 60;
-          command = "${pause}; ${lock}";
-        }
-        {
-          timeout = 90;
-          command = "${pkgs.systemd}/bin/systemctl suspend";
-        }
-      ];
-    };
-  };
 }
