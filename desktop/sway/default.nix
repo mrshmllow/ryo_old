@@ -140,7 +140,7 @@ in {
                 text = colors.base;
               };
             };
-            statusCommand = lib.getExe pkgs.i3blocks;
+            statusCommand = lib.getExe' pkgs.i3blocks "i3blocks";
             extraConfig = ''
               gaps 5
             '';
