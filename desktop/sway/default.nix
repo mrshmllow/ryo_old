@@ -41,8 +41,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     dbus # make dbus-update-activation-environment available in the path
-    dbus-sway-environment
-    configure-gtk
     gnome3.adwaita-icon-theme
     i3blocks
   ];
