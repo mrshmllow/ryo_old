@@ -128,6 +128,7 @@ in {
         };
         keybindings = lib.mkOptionDefault {
           "Mod4+Shift+s" = ''exec IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" $IMG && wl-copy < $IMG'';
+          "Mod4+n" = ''exec neovide'';
         };
         bars = [
           {
