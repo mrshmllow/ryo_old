@@ -29,14 +29,6 @@
     '';
     # gsettings set $gnome_schema gtk-theme 'Dracula'
   };
-
-  colors = {
-    text = "#cdd6f4";
-    # all .8 opacity
-    surface1 = "#45475acc";
-    base = "#1e1e2ecc";
-    mauve = "#cba6f7cc";
-  };
 in {
   imports = [../.wayland-wm];
 
@@ -73,6 +65,7 @@ in {
       enable = true;
       package = null;
       config = {
+        workspaceAutoBackAndForth = true;
         assigns = {
           "1" = [
             {
@@ -100,6 +93,7 @@ in {
         gaps = {
           outer = 2;
           inner = 4;
+          smartBorders = "on";
         };
         input = {
           "5426:125:Razer_Razer_DeathAdder_V2_Pro" = {
@@ -132,37 +126,39 @@ in {
         };
         bars = [
           {
-            position = "top";
-            # height = 30;
-            colors = {
-              statusline = "#ffffff";
-              background = colors.base;
-              inactiveWorkspace = {
-                background = colors.base;
-                border = colors.base;
-                text = colors.text;
-              };
-              focusedWorkspace = {
-                background = colors.mauve;
-                border = colors.mauve;
-                text = colors.base;
-              };
-            };
-            statusCommand = lib.getExe' pkgs.i3blocks "i3blocks";
-            extraConfig = ''
-              gaps 5
-            '';
+            command = "${lib.getExe pkgs.waybar}";
           }
         ];
+        colors = {
+          focused = {
+            text = "#1e1e2e";
+
+            background = "#cba6f7";
+            border = "#cba6f7";
+
+            childBorder = "#cba6f7";
+
+            indicator = "#6c7086";
+          };
+          unfocused = {
+            text = "#cdd6f4";
+
+            background = "#1e1e2e";
+            border = "#1e1e2e";
+
+            childBorder = "#1e1e2e";
+
+            indicator = "#6c7086";
+          };
+        };
       };
       extraConfig = ''
         blur enable
         corner_radius 10
-        default_dim_inactive 0.1
         shadows enable
 
-        layer_effects "panel" blur enable; shadows enable; corner_radius 6
       '';
+      # layer_effects "notifications" blur enable; shadows enable;
     };
   };
 }

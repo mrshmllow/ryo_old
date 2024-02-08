@@ -9,13 +9,30 @@
     glib # gsettings
     gnome3.adwaita-icon-theme
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    mako # notification system developed by swaywm maintainer
     pamixer
     pavucontrol
     playerctl
   ];
 
+  imports = [./waybar.nix];
+
   home-manager.users.marsh = {config, ...}: {
+    services.mako = {
+      enable = true;
+      anchor = "bottom-right";
+      # backgroundColor = "#1e1e2ecc";
+      backgroundColor = "#1e1e2e";
+      borderColor = "#cba6f7";
+      textColor = "#cdd6f4";
+      borderRadius = 8;
+      borderSize = 2;
+      margin = "6";
+      font = "JetBrainsMono Nerd Font 10";
+      extraConfig = ''
+        [urgency=high]
+        border-color=#f38ba8
+      '';
+    };
     programs.swaylock = {
       enable = true;
       settings = {
