@@ -1,6 +1,7 @@
 {
   pkgs,
   flatpaks,
+  nixpkgs,
   ...
 }: {
   imports = [
@@ -8,11 +9,21 @@
   ];
 
   users.users.marsh = {
-    packages = with pkgs; [
-      jetbrains.idea-ultimate
-      jetbrains.rust-rover
-      neovide
-    ];
+    packages = let
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+        config.permittedInsecurePackages = [
+          "electron-25.9.0"
+        ];
+      };
+    in
+      with pkgs; [
+        jetbrains.idea-ultimate
+        jetbrains.rust-rover
+        neovide
+        obsidian
+      ];
   };
 
   home-manager.users.marsh = {
