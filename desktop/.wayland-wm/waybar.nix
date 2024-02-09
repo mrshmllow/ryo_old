@@ -66,13 +66,13 @@
             on-click = "pavucontrol --tab=3";
           };
           network = {
-            format-wifi = "<span color=\"#a6adc8\">WIFI</span> {essid}";
-            format-ethernet = "<span color=\"#a6adc8\">WIRED</span>";
+            format-wifi = "<span color=\"#a6adc8\">WIFI</span> {essid} ";
+            format-ethernet = "<span color=\"#a6adc8\">WIRED</span> ";
 
-            tooltip-format = "{ifname} via {gwaddr} ";
+            tooltip-format = "{ifname} via {gwaddr}";
 
-            format-linked = "<span color=\"#a6adc8\">NO IP</span> {ifname}";
-            format-disconnected = "NO IP";
+            format-linked = "<span color=\"#a6adc8\">NO IP</span> {ifname} ";
+            format-disconnected = "NO IP ";
 
             format-alt = "{ifname}: {ipaddr}/{cidr}";
           };
