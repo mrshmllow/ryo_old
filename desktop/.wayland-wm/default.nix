@@ -96,5 +96,24 @@
         sidebar-mode = true;
       };
     };
+    systemd.user.services = {
+      "vesktop" = {
+        Unit = {
+          Description = "vesktop";
+          Wants = "network-online.target";
+          After = ["network-online.target" "graphical-session.target"];
+          PartOf = "graphical-session.target";
+        };
+        Service = {
+          Type = "exec";
+          Restart = "no";
+          ExecStart = lib.getExe pkgs.vesktop;
+          Enabled = true;
+        };
+        Install = {
+          WantedBy = ["graphical-session.target"];
+        };
+      };
+    };
   };
 }
