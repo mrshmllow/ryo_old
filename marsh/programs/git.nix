@@ -18,6 +18,7 @@
         postBuffer = 157286400;
       };
     };
+    lfs.enable = true;
   };
   programs.mr = {
     enable = true;
