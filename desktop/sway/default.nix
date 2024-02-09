@@ -88,6 +88,9 @@ in {
             {
               class = "Rofi";
             }
+            {
+              app_id = "pavucontrol";
+            }
           ];
         };
         gaps = {
