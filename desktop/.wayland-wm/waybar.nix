@@ -32,6 +32,7 @@
             "pulseaudio"
             "network"
             "tray"
+            "battery"
           ];
           cpu = {
             format = "<span color=\"#a6adc8\">CPU</span> {usage}% ";
@@ -74,6 +75,12 @@
             format-disconnected = "NO IP";
 
             format-alt = "{ifname}: {ipaddr}/{cidr}";
+          };
+          battery = {
+            format = "<span color=\"#a6adc8\">BAT</span> {capacity}% ";
+            format-charging = "<span color=\"#a6adc8\">BAT+</span> {capacity}% ";
+            format-plugged = "<span color=\"#a6adc8\">BAT~</span> {capacity}% ";
+            tooltip-format = "{time}";
           };
           tray = {
             icon-size = 21;
