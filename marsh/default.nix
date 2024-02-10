@@ -85,6 +85,28 @@
       font.name = "JetBrainsMono Nerd Font Mono";
       # linux_display_server x11
     };
+    programs.wezterm = {
+      enable = true;
+      extraConfig = ''
+        local wezterm = require "wezterm"
+
+        function scheme_for_appearance(appearance)
+          if appearance:find "Dark" then
+            return "Catppuccin Mocha"
+          else
+            return "Catppuccin Latte"
+          end
+        end
+
+        return {
+          font = wezterm.font 'JetBrainsMono Nerd Font Mono',
+          hide_tab_bar_if_only_one_tab = true,
+          color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
+          window_background_opacity = .9,
+          automatically_reload_config = true,
+        }
+      '';
+    };
     programs.lazygit.enable = true;
     programs.starship = {
       enable = true;
