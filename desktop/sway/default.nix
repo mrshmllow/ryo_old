@@ -120,7 +120,7 @@ in {
           {command = "${configure-gtk}";}
           {command = "${lib.getExe pkgs.autotiling-rs}";}
         ];
-        terminal = "kitty";
+        terminal = "wezterm";
         window = {
           titlebar = false;
         };
