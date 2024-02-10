@@ -118,7 +118,7 @@ in {
         startup = [
           {command = "${dbus-sway-environment}";}
           {command = "${configure-gtk}";}
-          {command = "${pkgs.autotiling-rs}";}
+          {command = "${lib.getExe pkgs.autotiling-rs}";}
         ];
         terminal = "kitty";
         window = {
