@@ -20,7 +20,7 @@
 
           modules-center = ["clock"];
           clock = {
-            format = "{:%a %b%e %I:%M %p}";
+            format = "{:%a %b %e %I:%M %p}";
             tooltip-format = "{:%m/%d/%Y %H:%M}";
           };
 
