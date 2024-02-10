@@ -73,6 +73,7 @@
     config,
     ...
   }: {
+    imports = [./dconf.nix];
     gtk = {
       enable = true;
       theme = {

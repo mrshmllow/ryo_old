@@ -14,23 +14,6 @@
       show-battery-percentage = true;
     };
 
-    # "org/gnome/desktop/background" = {
-    #   color-shading-type = "solid";
-    #   picture-options = "zoom";
-    #   picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-l.webp";
-    #   picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-d.webp";
-    #   primary-color = "#3071AE";
-    #   secondary-color = "#000000";
-    # };
-
-    # "org/gnome/desktop/screensaver" = {
-    #   color-shading-type = "solid";
-    #   picture-options = "zoom";
-    #   picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/adwaita-l.webp";
-    #   primary-color = "#3071AE";
-    #   secondary-color = "#000000";
-    # };
-
     "org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = true;
       two-finger-scrolling-enabled = true;
@@ -58,11 +41,6 @@
       media-control-compact-mode = false;
       media-control-enabled = false;
       notifications-enabled = false;
-    };
-
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
     };
   };
 }
