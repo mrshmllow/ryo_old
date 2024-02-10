@@ -6,6 +6,7 @@
 }: {
   imports = [
     flatpaks.nixosModules.default
+    ./fusion.nix
   ];
 
   users.users.marsh = {
