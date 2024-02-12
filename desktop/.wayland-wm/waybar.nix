@@ -133,6 +133,7 @@
           margin-left: 8px;
           margin-right: 8px;
           margin-bottom: 4px;
+          margin-top: 4px;
 
           padding: 0px 6px;
 
