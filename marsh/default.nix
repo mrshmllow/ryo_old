@@ -160,9 +160,6 @@
         desktop = null;
       };
     };
-    #programs.emacs = {
-    #  enable = true;
-    #};
     programs.mpv = {
       enable = true;
       config = {

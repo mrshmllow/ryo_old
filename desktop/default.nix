@@ -5,7 +5,7 @@
 }: {
   imports = [
     nix-gaming.nixosModules.pipewireLowLatency
-    ./apps.nix
+    ./apps
   ];
 
   environment.systemPackages = with pkgs; [

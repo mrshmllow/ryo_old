@@ -7,6 +7,7 @@
   imports = [
     flatpaks.nixosModules.default
     ./fusion.nix
+    ./emacs
   ];
 
   users.users.marsh = {

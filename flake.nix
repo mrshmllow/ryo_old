@@ -19,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix.url = "github:Mic92/sops-nix";
+    emacs.url = "github:nix-community/emacs-overlay";
   };
 
   outputs = inputs @ {nixpkgs, ...}: let
