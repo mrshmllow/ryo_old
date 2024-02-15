@@ -93,10 +93,16 @@ in {
             }
           ];
         };
-        gaps = {
+        gaps = let
           outer = 2;
+        in {
+          top = outer;
+          horizontal = outer;
+          bottom = 0;
+
           inner = 4;
           smartBorders = "on";
+          smartGaps = true;
         };
         input = {
           "5426:125:Razer_Razer_DeathAdder_V2_Pro" = {
