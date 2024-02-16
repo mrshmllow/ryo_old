@@ -6,6 +6,7 @@
   imports = [
     nix-minecraft.nixosModules.minecraft-servers
     ./hardware-configuration.nix
+    ../../nix.nix
   ];
   nixpkgs.overlays = [nix-minecraft.overlay];
 
@@ -26,12 +27,6 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO9FpVP2ZEPbjcibGlSI5cutue6aaiNNSH3syLFzrpbj marsh@marsh-framework"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPRXTpL1qfcm78/eofQDdpMmquk/N8LqKh7tdMnXwbwT"
   ];
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 1w";
-  };
 
   nix.settings.auto-optimise-store = true;
 
@@ -96,91 +91,31 @@
     useRoutingFeatures = "server";
   };
 
-  # services.nginx = {
-  #   enable = true;
-  #   recommendedProxySettings = true;
-  #   recommendedTlsSettings = true;
-  #   recommendedGzipSettings = true;
-  #   recommendedOptimisation = true;
-
-  #   virtualHosts = {
-  #     "jerma.fans" = {
-  #       enableACME = true;
-  #       forceSSL = true;
-  #       locations."/" = {
-  #         proxyPass = "http://127.0.0.1:8096";
-  #         proxyWebsockets = true;
-  #         extraConfig = "proxy_ssl_server_name on;" +
-  #           "proxy_pass_header Authorization;";
-  #       };
-  #     };
-  #     "request.jerma.fans" = {
-  #       enableACME = true;
-  #       forceSSL = true;
-  #       locations."/" = {
-  #         proxyPass = "http://127.0.0.1:5055";
-  #         proxyWebsockets = true;
-  #         extraConfig = "proxy_ssl_server_name on;" +
-  #           "proxy_pass_header Authorization;";
-  #       };
-  #     };
-  #   };
-  # };
-
-  # security.acme.acceptTerms = true;
-  # security.acme.defaults.email = "marshycity@gmail.com";
-
-  # security.acme.certs."jerma.fans".extraDomainNames = [ "request.jerma.fans" ];
-
-  # services.cfdyndns = {
-  #   enable = true;
-  #   apikeyFile = "/etc/nixos/cf_api_key";
-  #   email = "marshycity@gmail.com";
-  #   records = [ "jerma.fans" "request.jerma.fans" ];
-  # };
-
-  nixpkgs.config.allowUnfree = true;
-  services.minecraft-servers = {
+  services.caddy = {
     enable = true;
-    eula = true;
-    openFirewall = true;
+    virtualHosts."https://req.jerma.fans".extraConfig = ''
+      reverse_proxy http://127.0.0.1:5055
+    '';
+    virtualHosts."http://req.jerma.fans".extraConfig = ''
+      reverse_proxy http://127.0.0.1:5055
+    '';
+    virtualHosts."https://jelly.jerma.fans".extraConfig = ''
+      reverse_proxy http://127.0.0.1:8096
+    '';
+    virtualHosts."http://jelly.jerma.fans".extraConfig = ''
+      reverse_proxy http://127.0.0.1:8096
+    '';
+  };
 
-    servers.fabric = {
-      enable = true;
-      package = pkgs.fabricServers.fabric-1_20_2;
-
-      serverProperties = {
-        gamemode = "survival";
-        enable-rcon = true;
-        "rcon.password" = "marsh";
-        view-distance = 32;
-      };
-
-      symlinks = {
-        mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
-          Lithium = pkgs.fetchurl {
-            url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/qdzL5Hkg/lithium-fabric-mc1.20.2-0.12.0.jar";
-            sha512 = "0ywgqahmrfgl5yqf9hzck216gikv87f9fn6gsq2pp7gmlxaf2wj107104playxviv2ypr0656agjrjir2si3q5anbdi2c2sxsb5zpw8";
-          };
-          FerriteCore = pkgs.fetchurl {
-            url = "https://cdn.modrinth.com/data/uXXizFIs/versions/unerR5MN/ferritecore-6.0.1-fabric.jar";
-            sha512 = "1bw8svzp1vp30afdmzj2gv8zx4vsj7xcm17ybcxvzbx2b2kash4pgc5lcla7bfwvdnskrq5ddjdcz4511lvqywcv0api4x7py3cczcv";
-          };
-          SimpleVoiceChat = pkgs.fetchurl {
-            url = "https://cdn.modrinth.com/data/9eGKb6K1/versions/5bFG77fl/voicechat-fabric-1.20.2-2.4.27.jar";
-            sha512 = "2s5px5rvai6w3ikgiw2vi24qaw56ca9k088ladvfydvxvjhabvzl7r25fsmzxa3482pxf5gkv4hz9nd6pw843vaim8zd2yfgfzsjd2h";
-          };
-          SimpleVoiceChatEnhancedGroups = pkgs.fetchurl {
-            url = "https://cdn.modrinth.com/data/1LE7mid6/versions/RBMzOtut/enhanced-groups-1.20.2-1.4.0.jar";
-            sha512 = "3y77j7c4d4ybrlva1xyns3xbkay92xlr2bznjavyfyp0cngzvzjml75h176lpmfnp17szvsa97m3m29nf85xi5q1d5v7k082qnkl2f2";
-          };
-        });
-      };
-    };
+  services.cfdyndns = {
+    enable = true;
+    apiTokenFile = "/run/secrets/cf_token";
+    records = ["jelly.jerma.fans" "req.jerma.fans"];
   };
 
   services.openssh.enable = true;
   services.openssh.openFirewall = true;
+  services.openssh.settings.PermitRootLogin = "yes";
 
   networking.firewall.allowedTCPPorts = [80 448 24454];
   networking.firewall.allowedUDPPorts = [24454];

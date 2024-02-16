@@ -70,6 +70,7 @@
         specialArgs = inputs;
         modules = [
           ./hosts/pi
+          ./sops.nix
         ];
       };
       "marsh-wsl" = nixpkgs.lib.nixosSystem {

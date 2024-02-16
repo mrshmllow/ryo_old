@@ -19,6 +19,10 @@
         format = "binary";
         sopsFile = secrets/cert;
       };
+      cf_token = {
+        format = "binary";
+        sopsFile = secrets/cf_token;
+      };
     };
   };
 }
