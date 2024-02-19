@@ -19,6 +19,18 @@
       };
     };
     lfs.enable = true;
+    aliases = {
+      "blame" = "blame -w -C -C -C -L";
+    };
+    extraConfig = {
+      rerere = {
+        enabled = true;
+      };
+      column.ui = "auto";
+      branch = {
+        sort = "-committerdate";
+      };
+    };
   };
   programs.mr = {
     enable = true;
