@@ -52,7 +52,6 @@
                   popd
               case 'pi'
                   pushd ~/ryo
-                  nix flake update
                   nixos-rebuild switch --flake .#pi --target-host root@pi --build-host root@pi --verbose --fast
                   popd
               case 'switch'
