@@ -65,6 +65,7 @@
       ./programs/git.nix
       ./programs/gpg.nix
       ./programs/ssh.nix
+      ./programs/mpv.nix
     ];
     home.stateVersion = "23.11";
     home.file.".face" = {
@@ -160,15 +161,6 @@
         desktop = null;
       };
     };
-    programs.mpv = {
-      enable = true;
-      config = {
-        hwdec = "auto-safe";
-        vo = "gpu";
-        profile = "gpu-hq";
-      };
-    };
-
     home.file.".config/neovide/config.toml".text = ''
       vsync = false
       maximized = true
