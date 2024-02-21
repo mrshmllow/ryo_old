@@ -111,6 +111,7 @@ in {
           };
           "2362:628:PIXA3854:00_093A:0274_Touchpad" = {
             natural_scroll = "disabled";
+            tap = "enabled";
           };
         };
         menu = "${lib.getExe pkgs.rofi} -normal-window -show drun";
