@@ -48,7 +48,7 @@
           ./marsh
 
           ./desktop
-          ./desktop/gnome
+          ./desktop/sway
           rust
         ];
       };
