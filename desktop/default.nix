@@ -33,8 +33,8 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    layout = "au";
-    xkbVariant = "";
+    xkb.layout = "au";
+    xkb.variant = "";
 
     excludePackages = [pkgs.xterm];
     desktopManager.xterm.enable = false;
