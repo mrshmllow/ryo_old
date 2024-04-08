@@ -91,34 +91,77 @@
     useRoutingFeatures = "server";
   };
 
+  services.postgresql = {
+    enable = true;
+    initialScript = pkgs.writeText "synapse-init.sql" ''
+      CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
+      CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
+        TEMPLATE template0
+        LC_COLLATE = "C"
+        LC_CTYPE = "C";
+    '';
+  };
+
+  services.matrix-synapse = {
+    enable = true;
+    extras = [
+      "oidc"
+    ];
+    settings = {
+      server_name = "althaea.zone";
+      url_preview_enabled = true;
+      max_upload_size = "200M";
+      enable_registration = false;
+
+      oidc_providers = [
+        {
+          idp_id = "google";
+          idp_name = "Google";
+          idp_brand = "google";
+          issuer = "https://accounts.google.com/";
+          client_id = "368589021222-uensak8b258t3e7jqe9lqor4m07n4har.apps.googleusercontent.com";
+          scopes = ["openid" "profile"];
+          user_mapping_provider = {
+            config = {
+              localpart_template = "{{ user.given_name|lower }}";
+              display_name_template = "{{ user.name }}";
+            };
+          };
+        }
+      ];
+    };
+  };
+
   services.caddy = {
     enable = true;
-    virtualHosts."https://req.jerma.fans".extraConfig = ''
-      reverse_proxy http://127.0.0.1:5055
-    '';
     virtualHosts."http://req.jerma.fans".extraConfig = ''
       reverse_proxy http://127.0.0.1:5055
     '';
-    virtualHosts."https://jelly.jerma.fans".extraConfig = ''
-      reverse_proxy http://127.0.0.1:8096
-    '';
     virtualHosts."http://jelly.jerma.fans".extraConfig = ''
       reverse_proxy http://127.0.0.1:8096
+    '';
+
+    virtualHosts."http://althaea.zone".extraConfig = ''
+      reverse_proxy /_matrix/* localhost:8008
+      reverse_proxy /_synapse/client/* localhost:8008
+    '';
+    virtualHosts."http://althaea.zone:8448".extraConfig = ''
+      reverse_proxy /_matrix/* localhost:8008
     '';
   };
 
   services.cfdyndns = {
     enable = true;
     apiTokenFile = "/run/secrets/cf_token";
-    records = ["jelly.jerma.fans" "req.jerma.fans"];
+    records = ["jelly.jerma.fans" "req.jerma.fans" "althaea.zone"];
   };
 
   services.openssh.enable = true;
   services.openssh.openFirewall = true;
   services.openssh.settings.PermitRootLogin = "yes";
 
-  networking.firewall.allowedTCPPorts = [80 448 24454];
-  networking.firewall.allowedUDPPorts = [24454];
+  networking.firewall.allowedTCPPorts = [80 448 8448];
+  networking.firewall.allowedUDPPorts = [];
 
   system.stateVersion = "23.05";
 }
