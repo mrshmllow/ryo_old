@@ -160,8 +160,8 @@
   services.openssh.openFirewall = true;
   services.openssh.settings.PermitRootLogin = "yes";
 
-  networking.firewall.allowedTCPPorts = [80 448 8448];
-  networking.firewall.allowedUDPPorts = [];
+  networking.firewall.allowedTCPPorts = [80 443 8448 5432];
+  networking.firewall.allowedUDPPorts = [5432];
 
   system.stateVersion = "23.05";
 }
