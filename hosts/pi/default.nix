@@ -109,6 +109,7 @@
     ];
     settings = {
       server_name = "althaea.zone";
+      public_baseurl = "https://matrix.althaea.zone";
       url_preview_enabled = true;
       max_upload_size = "200M";
       enable_registration = false;
