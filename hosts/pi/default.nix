@@ -142,12 +142,25 @@
       reverse_proxy http://127.0.0.1:8096
     '';
 
-    virtualHosts."http://althaea.zone".extraConfig = ''
+    virtualHosts."http://10.1.1.2".extraConfig = ''
+      header /.well-known/matrix/* Content-Type application/json
+      header /.well-known/matrix/* Access-Control-Allow-Origin *
+      respond /.well-known/matrix/server `{"m.server": "matrix.althaea.zone:443"}`
+      respond /.well-known/matrix/client `{"m.homeserver":{"base_url":"https://matrix.althaea.zone"}}`
+    '';
+    virtualHosts."https://althaea.zone".extraConfig = ''
+      header /.well-known/matrix/* Content-Type application/json
+      header /.well-known/matrix/* Access-Control-Allow-Origin *
+      respond /.well-known/matrix/server `{"m.server": "matrix.althaea.zone:443"}`
+      respond /.well-known/matrix/client `{"m.homeserver":{"base_url":"https://matrix.althaea.zone"}}`
+
+      tls /var/lib/caddy/althaea.zone.pem /var/lib/caddy/althaea.zone.key
+    '';
+    virtualHosts."https://matrix.althaea.zone".extraConfig = ''
       reverse_proxy /_matrix/* localhost:8008
       reverse_proxy /_synapse/client/* localhost:8008
-    '';
-    virtualHosts."http://althaea.zone:8448".extraConfig = ''
-      reverse_proxy /_matrix/* localhost:8008
+
+      tls /var/lib/caddy/althaea.zone.pem /var/lib/caddy/althaea.zone.key
     '';
   };
 
