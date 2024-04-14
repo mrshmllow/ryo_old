@@ -71,7 +71,7 @@
     home.file.".face" = {
       source = builtins.fetchurl {
         url = "https://avatars.githubusercontent.com/u/40532058";
-        sha256 = "06vm51wmckw5d4ni3rxnc8xbq8fxfr42s70cda4g2w9wsn97zsj7";
+        sha256 = "1bfy2npk0q7lsjb0r1i7idl7fhv9lccw91qpa4230yxfmml2vhkp";
       };
     };
     programs.kitty = {
