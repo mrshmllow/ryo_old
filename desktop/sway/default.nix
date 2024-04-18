@@ -109,8 +109,8 @@ in {
             accel_profile = "flat";
             pointer_accel = ".5";
           };
-          "2362:628:PIXA3854:00_093A:0274_Touchpad" = {
-            natural_scroll = "disabled";
+          "type:touchpad" = {
+            natural_scroll = "enabled";
             tap = "enabled";
           };
         };
