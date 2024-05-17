@@ -49,6 +49,7 @@
       nodePackages_latest."@tailwindcss/language-server"
       nodePackages_latest.vscode-json-languageserver-bin
       nodePackages_latest.yaml-language-server
+      nodePackages_latest."@astrojs/language-server"
       nodePackages.mermaid-cli
     ];
   };
