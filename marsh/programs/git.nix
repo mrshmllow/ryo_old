@@ -31,6 +31,8 @@
         sort = "-committerdate";
       };
     };
+    difftastic.enable = true;
+    difftastic.display = "inline";
   };
   programs.gh = {
     enable = true;
