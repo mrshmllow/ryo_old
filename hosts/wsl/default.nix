@@ -18,11 +18,14 @@
       };
     };
 
-    # Enable native Docker support
-    # docker-native.enable = true;
-
     # Enable integration with Docker Desktop (needs to be installed)
     # docker-desktop.enable = true;
+  };
+
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
   };
 
   networking.hostName = "marsh-wsl";
