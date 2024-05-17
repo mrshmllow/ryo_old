@@ -30,11 +30,7 @@
 
   networking.hostName = "marsh-wsl";
 
-  # Enable nix flakes
-  nix.package = pkgs.nixFlakes;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   system.stateVersion = "23.11";
 }
