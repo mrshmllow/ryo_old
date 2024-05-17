@@ -32,14 +32,6 @@
       };
     };
   };
-  programs.mr = {
-    enable = true;
-    settings = {
-      "${config.xdg.dataHome}/password-store" = {
-        checkout = "git clone git@github.com:mrshmllow/pass.git";
-      };
-    };
-  };
   programs.gh = {
     enable = true;
     settings.git_protocol = "ssh";
