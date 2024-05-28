@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  candy,
+  lib,
+  ...
+}: {
   imports = [
     ./nix.nix
     ./sops.nix
@@ -46,13 +51,18 @@
     enableSSHSupport = true;
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    package = pkgs.neovim-nightly;
-  };
+  # programs.neovim = {
+  #   enable = true;
+  #   defaultEditor = true;
+  #   viAlias = true;
+  #   vimAlias = true;
+  # };
+
+  environment.systemPackages = [
+    candy.packages.${pkgs.system}.default
+  ];
+
+  environment.variables.EDITOR = lib.mkOverride 900 "nvim";
 
   programs.direnv.enable = true;
 

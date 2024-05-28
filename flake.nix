@@ -21,6 +21,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     emacs.url = "github:nix-community/emacs-overlay";
     nix-super.url = "github:privatevoid-net/nix-super";
+    candy.url = "github:mrshmllow/nvim-candy";
   };
 
   outputs = inputs @ {nixpkgs, ...}: let
