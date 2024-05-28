@@ -30,11 +30,11 @@
         "stay-in-place-nvim": "stay-in-place-nvim"
       },
       "locked": {
-        "lastModified": 1716888074,
-        "narHash": "sha256-7CilVkXyTIjvExPT+Na82Cug6XwskA3O4ZFsJQzcZio=",
+        "lastModified": 1716891817,
+        "narHash": "sha256-qaAqz2lGyGX6vrKs/WLdBpiz4oETnzcGNKBocBY2oyA=",
         "owner": "mrshmllow",
         "repo": "nvim-candy",
-        "rev": "1a1b65135c3a62a235314394e16266d77a2e62c8",
+        "rev": "aae490aa7cbe57325e8c3733ccc494c743bea0f7",
         "type": "github"
       },
       "original": {
