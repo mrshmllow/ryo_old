@@ -1,5 +1,5 @@
 # Meta nix config
-{pkgs, nix-super, ...}: {
+{pkgs, ...}: {
   nixpkgs.config.allowUnfree = true;
 
   nix.extraOptions = ''
@@ -9,7 +9,6 @@
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
     auto-optimise-store = true;
-    sandbox = "relaxed";
     substituters = [
       "https://cache.nixos.org/"
       "https://cache.garnix.io"
@@ -23,7 +22,6 @@
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
-    package = nix-super.packages.${pkgs.system}.nix;
   };
 
   nix.gc = {
