@@ -6,7 +6,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flatpaks.url = "github:GermanBread/declarative-flatpak/dev";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     wsl.url = "github:nix-community/NixOS-WSL";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nix-gaming.url = "github:fufexan/nix-gaming";
@@ -26,7 +25,7 @@
 
   outputs = inputs @ {nixpkgs, ...}: let
     rust = {pkgs, ...}: {
-      nixpkgs.overlays = [inputs.fenix.overlays.default inputs.neovim-nightly-overlay.overlay];
+      nixpkgs.overlays = [inputs.fenix.overlays.default];
       environment.systemPackages = with pkgs; [
         (inputs.fenix.packages.x86_64-linux.complete.withComponents [
           "cargo"
