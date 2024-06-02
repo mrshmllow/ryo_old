@@ -93,6 +93,9 @@
 
   services.thermald.enable = true;
 
+  programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark;
+
   networking.hostName = "althaea";
 
   networking.wireless.enable = true;

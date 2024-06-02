@@ -14,7 +14,7 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "marsh";
-    extraGroups = ["networkmanager" "wheel" "docker" "openrazer"];
+    extraGroups = ["networkmanager" "wheel" "docker" "openrazer" "wireshark"];
     packages = with pkgs; [
       ripgrep
       flatpak-builder
