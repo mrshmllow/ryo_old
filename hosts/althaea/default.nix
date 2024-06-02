@@ -15,6 +15,15 @@
     vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
   };
 
+  services.tailscale.enable = true;
+
+  networking.nameservers = ["9.9.9.9"];
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="input", ATTRS{idVendor}=="ffff", ATTRS{idProduct}=="0035", SYMLINK+="card_reader"
+  '';
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
   services.power-profiles-daemon.enable = false;
   services.tlp = {
     enable = true;
