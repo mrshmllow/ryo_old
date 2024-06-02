@@ -95,7 +95,9 @@
 
   networking.hostName = "althaea";
 
-  networking.networkmanager.wifi.backend = "iwd";
+  networking.wireless.enable = true;
+  # networking.wireless.iwd.enable = true;
+
 
   boot.kernelParams = [
     "intel_iommu=on"
