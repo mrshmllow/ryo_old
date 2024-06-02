@@ -6,13 +6,13 @@
   installer = pkgs.fetchurl {
     url = "https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe";
     name = "Fusion Client Downloader.exe";
-    hash = "sha256-IhUPcXgC0I/s2l0wfwyaokG5Hbm60hmvrbeo5PkbWI4=";
+    hash = "sha256-iRE/wmhH/EtAu+3npgjQ8N1N8vAlulNl47Uk8S8bIhU";
   };
 
   webview = pkgs.fetchurl {
     url = "https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe";
     name = "MicrosoftEdgeWebView2RuntimeInstallerX64.exe";
-    sha256 = "0nzxp64qfn9yii1n7cywl8ym88kzli2ak7sdcva045127s34kk7j";
+    sha256 = "sha256-iRE/wmhH/EtAu+3npgjQ8N1N8vAlulNl47Uk8S8bIhU=";
   };
 
   xml = pkgs.writeText "NMachineSpecificOptions.xml" ''
