@@ -9,10 +9,6 @@
     wsl.url = "github:nix-community/NixOS-WSL";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nix-gaming.url = "github:fufexan/nix-gaming";
-    fenix = {
-      url = "github:nix-community/fenix/monthly";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,22 +18,7 @@
     candy.url = "github:mrshmllow/nvim-candy";
   };
 
-  outputs = inputs @ {nixpkgs, ...}: let
-    rust = {pkgs, ...}: {
-      nixpkgs.overlays = [inputs.fenix.overlays.default];
-      environment.systemPackages = with pkgs; [
-        (inputs.fenix.packages.x86_64-linux.complete.withComponents [
-          "cargo"
-          "clippy"
-          "rust-src"
-          "rustc"
-          "rustfmt"
-        ])
-        rust-analyzer-nightly
-      ];
-    };
-  in {
-    packages.x86_64-linux.default = inputs.fenix.packages.x86_64-linux.minimal.toolchain;
+  outputs = inputs @ {nixpkgs, ...}: {
     nixosConfigurations = {
       "althaea" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -49,7 +30,6 @@
 
           ./desktop
           ./desktop/sway
-          rust
         ];
       };
       "maple" = nixpkgs.lib.nixosSystem {
@@ -62,7 +42,6 @@
 
           ./desktop
           ./desktop/sway
-          rust
         ];
       };
       "pi" = nixpkgs.lib.nixosSystem {
@@ -80,7 +59,6 @@
           ./common.nix
           ./hosts/wsl
           ./marsh
-          rust
         ];
       };
     };
