@@ -18,17 +18,18 @@
   boot.extraModulePackages = [];
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/32cb422c-a219-4af7-b466-070ab362c621";
-    fsType = "ext4";
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/32cb422c-a219-4af7-b466-070ab362c621";
+      fsType = "ext4";
+    };
 
-  boot.initrd.luks.devices."luks-a9a4a8b1-4bdd-4a24-b207-65ce6564700a".device = "/dev/disk/by-uuid/a9a4a8b1-4bdd-4a24-b207-65ce6564700a";
+  boot.initrd.luks.devices."nixos".device = "/dev/disk/by-uuid/a9a4a8b1-4bdd-4a24-b207-65ce6564700a";
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/445E-F902";
-    fsType = "vfat";
-  };
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/F08C-1A21";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
 
   swapDevices = [];
 
